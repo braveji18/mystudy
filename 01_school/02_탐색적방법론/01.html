@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>2013학년도 1학기 과제물(온라인제출용)</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>2013학년도 1학기 과제물(온라인제출용)</h1>
+
+<h3>교과목명 : 탐색적 자료분석</h3>
+
+<h3>학    번 : 201435-341832</h3>
+
+<h3>성    명 : 지용기</h3>
+
+<p>※ 다음 자료는 28명의 학생들을 대상으로 휴대전화 사용관련 자료를 설문하여 조사한 자료이다. <br/>
+휴대전화를 통한 모바일강의 수강상태는 수강시 1, 미수강시 0으로 코딩되었다.</p>
+
+<p>학생번호 : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 <br/>
+휴대전화 사용기간 : 3.6, 15.4, 11.3, 10.3,  5.8,  8.0, 14.6, 11.4,  7.2,  5.5, 11.1, 16.5, 10.9,  2.5, 10.8,  4.7,  5.5,  4.5,  9.0,  6.8 <br/>
+나이 : 25, 26, 32, 28, 26, 45, 30, 35, 28, 32, 37, 43, 25, 49, 35, 37, 26, 21, 18, 34 <br/>
+수강상태 : 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1 <br/></p>
+
+<h2>1. 위 자료의 나이의 줄기-잎-그림을 작성하라.(5점)</h2>
+
+<pre><code class="r">stnum &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
+    20)
+period &lt;- c(3.6, 15.4, 11.3, 10.3, 5.8, 8, 14.6, 11.4, 7.2, 5.5, 11.1, 16.5, 
+    10.9, 2.5, 10.8, 4.7, 5.5, 4.5, 9, 6.8)
+age &lt;- c(25, 26, 32, 28, 26, 45, 30, 35, 28, 32, 37, 43, 25, 49, 35, 37, 26, 
+    21, 18, 34)
+sukang &lt;- c(1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1)
+
+stem(age)
+</code></pre>
+
+<pre><code>## 
+##   The decimal point is 1 digit(s) to the right of the |
+## 
+##   1 | 8
+##   2 | 15566688
+##   3 | 02245577
+##   4 | 359
+</code></pre>
+
+<h2>2. 수강 상태에 따른 사용기간의 상자그림을 작성하고 해석하라.(5점)</h2>
+
+<pre><code class="r">yes_period &lt;- period[sukang[] == 1]
+no_period &lt;- period[sukang[] == 0]
+boxplot(yes_period, no_period, names = c(&quot;수강&quot;, &quot;미수강&quot;))
+</code></pre>
+
+<pre><code>## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;88&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;95&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;88&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;95&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;af&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b8&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;88&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;95&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;af&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b8&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;88&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;誘몄닔媛㤼㸵&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;95&gt;
+</code></pre>
+
+<pre><code class="r">title(&quot;수강 상태에 따른 사용기간의 상자그림&quot;)
+</code></pre>
+
+<pre><code>## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;88&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;95&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;83&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;81&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ed&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;83&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9c&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;97&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;90&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;94&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;a5&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b8&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;82&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ac&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9a&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;a9&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b8&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;84&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9d&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;83&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;81&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9e&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;90&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b7&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b8&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;a6&gt;
+## Warning: conversion failure on &#39;攼㹣닔媛㤼㸵 攼㹣긽攼㹤깭攼㹣뿉 攼㹢뵲瑜戼㸸 攼㹣궗攼㹣슜湲곌컙攼㹣쓽 攼㹣긽攼㹣옄洹몃┝&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;bc&gt;
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<h2>3. 나이에 따른 휴대전화 사용기간의 산점도와 저항회귀직선을 구하고 해석하라.(10점)</h2>
+
+<pre><code class="r">plot(age ~ period, type = &quot;p&quot;, xlab = &quot;나이&quot;, ylab = &quot;휴대전화 사용기간&quot;)
+</code></pre>
+
+<pre><code>## Warning: conversion failure on &#39;攼㹢굹攼㹣씠&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;攼㹢굹攼㹣씠&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;82&gt;
+## Warning: conversion failure on &#39;攼㹢굹攼㹣씠&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;98&gt;
+## Warning: conversion failure on &#39;攼㹢굹攼㹣씠&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹢굹攼㹣씠&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9d&gt;
+## Warning: conversion failure on &#39;攼㹢굹攼㹣씠&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b4&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ed&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9c&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b4&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;eb&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;8c&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;80&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;a0&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;84&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ed&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;99&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;94&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;82&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ac&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ec&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;9a&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;a9&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b8&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;ea&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;b0&gt;
+## Warning: conversion failure on &#39;攼㹤쑕攼㹢㠼㹣攼㹣쟾攼㹤솕 攼㹣궗攼㹣슜湲곌컙&#39; in &#39;mbcsToSbcs&#39;: dot substituted for &lt;84&gt;
+</code></pre>
+
+<pre><code class="r"># install.packages(&#39;LearnEDA&#39;)
+library(LearnEDA)
+</code></pre>
+
+<pre><code>## Warning: package &#39;LearnEDA&#39; was built under R version 3.0.3
+</code></pre>
+
+<pre><code>## Loading required package: aplpack
+## Loading required package: tcltk
+## Loading required package: vcd
+</code></pre>
+
+<pre><code>## Warning: package &#39;vcd&#39; was built under R version 3.0.3
+</code></pre>
+
+<pre><code>## Loading required package: grid
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAb1BMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5ADk5AGU5OWU5OY85ZrU5j9plAABlADllAGVlOQBlOY9ltf2POQCPOTmPOWWPZgCPtY+P29qP2/21ZgC1/v3ajzna24/a/v39tWX924/9/rX9/tr9/v0gzvsXAAAAJXRSTlP///////////////////////////////////////////////8AP89CTwAAAAlwSFlzAAALEgAACxIB0t1+/AAACodJREFUeJzt3Y1W28gBQOEVbaBbAtsWmjZLaCzj93/GWjJOILbx/Fma0b3fOVv2nFpC6FoeySt7ftsI6be5N0DzMDyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDnQ/f33SDv3ybYGs0mbPhXx4fxp+rT98vvjGaztnw6398e/dTy+ARD3V+jF/fnxrjO9UsN/xpZ1atWV0gfOBzSrPKDT+c1A2v9keGeMPXrED48YS+/xy7as2qQPj+9vvRyznD1yw7/P3V1y/DEX978Fpv+Jrln9y9PHbXm9Wxy7nETdIUvJyDMjyU4aEmC+8bOnWZKnx3/ndpSoaHMjyUYzyUZ/VQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aGcqADKiQqgnKgAyokKoOgTFWC/dxF+Vs/9plX4vHOGPyEwfP/7kSmFW9ihhj8h4OTu9fA+HOSb2KFtvDBdQPYRv77fJm/2iOcq8FK/vv/0P8O3psgY398cuZozfNXgl3NchocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMND/HqrkeEZDm4uNDyD4aEMT+UYr5HhoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhofKDt/fnPjWcsNXLTf8y+PD+HN1OPGc4WtWYPqxdz/DV61ZecRDFZihwjG+RZ7VQ8GnH+OCTz/GRZ9+DMvpx6CcfgzK6cegvJyDMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQYeGTGhq+ZoaHCgj/8zb5uJSGr1nUGG/45TA8VOBLfdCD41atWYWE//Ewwy9HYPg3/1Nq1ZpVaPg3x32hVWtWEeFjP/hcLnxrH7luYXujjviiq45bUf178qcmtreF9+qb2JFvNLG9hi+vie1tIXwTY+ZbLWxvxHv1853cqbwmjniVZ3io0Jf68qvWrILfsp3xOl4XEPwGTnxHw9csPHx0SMPXLCJ8bEnD18zwUF7OQRkeKjR8QkXD1ywk/Ost9bGX8oavWdjJ3fDWnR+oWJTA8JtT4YfZp4bvrD+ci8jwVSsQfpx5rP8cu2rNqkD4/va78841Jzv8/dXXL8MRf+u8c03JP7l7eeyuNyvnndsc3nJV8y1YXs6V8+tNllXfdHmBN3Cw884tMvxJ/U139+QUo4NFhj/1uGFS4adhAjJP7pY3xn/0uOEybnXn5Vxzcu+r308j7hHfmOwxfn0/lH92jG9MTHgv5xYkPHz0iYrhaxZ8cud99cuy8E/S1HxBNa9lH/FVv4Uyr2WP8YY/adln9YY/aeG3VzvGn7Lw8DrF8FCGh/KTNFCGh8r9z7Lpq9asHOOhgsJ3QY+NXLVmFRo+fhIqw1ct6AMV3f7TNCVXrVlFhPcDFUviEQ/lGA/lWT2U1/FQhocyPFTEe/WxKS8dvvK7a2rfvI//73cnd3WFr/x+uso3L/Q6fvc4w4erfPPCwu8fZvhwlW9eYPikC3nH+Lk34SNhJ3dhD45btWYVeMRX+FKvLIFjfMp/njN8zULDJ2Q0fM185w7K8FCGh/K+eig/SQNleChf6qE8uYMKfgPn/GMjV61ZZYfvb8ZBwO+ybUxu+P23V68OJ54zfM2iTu6OPGD/PfV+X31jck/uPOIblX1WP8wv6hg/rRI394TfZRv9uwx/IUVu57tAeOz0Y1OZMvzuBpxjD3b6sclNFb7bdN3JT8c7/dgMJhrjP/xaBKcfa1RueKcfa1TuS73TjzUq++QuedWaldfxUIaH8kYMKMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeihP+IjcBtntnISZ8kRvVJlnpNAxf3UqnYfjqVjoNTHjH+Pc44fWO4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoRoOv7/tqd3bn8qK2w/thu9++Ycucj8YfikMD4UJ7xj/C8oYryyGh8oNP3xd+TAtzeFcRIavWoHw41fV959jV61ZFQg/flW9ExU0Jjv8/dXXL9+cqKA5+Sd3L4/d9WaVOVHBUi7J2vk76jirX8qbMA39HRcInzDvXEM77EMN/R3Z4fub7urP3JO7hnbYhxr6O3LDD7NQvTze5Z7VtzM2fqydv6PEGzibzdO1l3ONKXHEbz3/9XfDNyV7jF/f3w0/jkw8Z/ia1XE5p8kZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGh6o9fDtfHNeYysM39FWRjTE8lOGhKg/vGH8ptYfXhRgeqsT31Q8ypybR1Ap9e/VmdTjxnOFrVub76p1+rDke8VAFvq/eMb5FntVD1TH9mCZXx/Rjmlwl049pak4/BuX0Y1BOPwbl5RyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvAnLfuuQcOfsvBPaBv+FMNfaNW1M/yFVl09x/jLrFqzMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhLhleNbtc+NRDfsGLtbCNO4YvulgL27hj+KKLtbCNO4YvulgL27hj+KKLtbCNO4YvulgL27hj+KKLtbCNO1nh1S7DQxkeyvBQhocyPJThoQwPZXgow0Olhx/mnH1IWXA/hWHkQuOUSLG2G3lkwryzSw2zcazvu8M5Fs8uFb9X+t3UH7F7ZVwsca8MksOv//hz0/8t5bc+pzxfnh6OzXV5zrCRz9GLrYYnyxDi+Tp2qfi9snp9Zkbuld1iaXtllBx+NeyUp4SE/d//Gb/UkamQgn7X7ff4RZ+u/rs9mobF+sN5eM4sFb1XdotF75Wf25gqa4wfnt+xXv79NeGlvr/9T8qLWtoRPwYfnzNRf9/+aRK5V3av2dF7ZbeNSXtllBN+mI4u2vNdyhjf3zyMKWJFD9S73zYcu58Sw8fulXGx+L0yhk/cK4OM8K/TU8XZbmdS+Ojjb7fYdrhdxZ/d5Rzx0Xvl9ZclhU/bK6Ocs/qUc/rn8Zbv6GfM+l9Jf2L8YTvqE8b4H2f1sXtlWCxhr4zbmLZXRsnh07oPki7nnpJe1DKO+OEVO+qs/seLb8Iv2yRezqXtlVFy+N2TNCV+UvjtYJ1wQb696kk5+0m/jk/YKznhE/fKwHfuoAwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCh6+O7tz9fvfEZ8Hbvhf/7sXv/F8ACGhzI8lOGhfoTfntYZHsQjHsrwUIaH2k/V5Rs4UN2Jf18sw0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQ/0fBBUcnelfjnsAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-2"/> </p>
+
+<pre><code class="r">rline(age, period, iter = 1)
+</code></pre>
+
+<pre><code>## $a
+## [1] 8.45
+## 
+## $b
+## [1] 0.4167
+## 
+## $xC
+## [1] 31
+## 
+## $half.slope.ratio
+## [1] 0.6949
+## 
+## $residual
+##  [1] -2.350e+00  9.033e+00  2.433e+00  3.100e+00 -5.667e-01 -6.283e+00
+##  [7]  6.567e+00  1.283e+00 -8.882e-16 -3.367e+00  1.500e-01  3.050e+00
+## [13]  4.950e+00 -1.345e+01  6.833e-01 -6.250e+00 -8.667e-01  2.167e-01
+## [19]  5.967e+00 -2.900e+00
+## 
+## $spoints.x
+## [1] 25 31 37
+## 
+## $spoints.y
+## [1]  5.80  8.75 10.80
+</code></pre>
+
+<h2>4. 다섯수치요약을 구하고 분포개형의 특징을 설명하고 적합한 재표현을 구하라.(5점)</h2>
+
+<pre><code class="r">summary(period)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.50    5.50    8.50    8.77   11.10   16.50
+</code></pre>
+
+<pre><code class="r">summary(age)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    18.0    26.0    31.0    31.6    35.5    49.0
+</code></pre>
+
+<h2>5. EDA의 네가지 주제를 설명하라(5점)</h2>
+
+</body>
+
+</html>
+

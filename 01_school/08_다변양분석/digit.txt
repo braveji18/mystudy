@@ -1,0 +1,6 @@
+		sample1		sample2		sample3
+digit1	20			18			35
+digit2	18			20			45
+digit3	30			15			15
+digit4	25			25			25
+digit5	30			10			50

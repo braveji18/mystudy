@@ -1,0 +1,35 @@
+,,mRNA
+Acute Myeloid Leukemia,LAML,0
+Adrenocortical carcinoma,ACC,0
+Bladder Urothelial Carcinoma,BLCA,0
+Brain Lower Grade Glioma,LGG,0
+Breast invasive carcinoma,BRCA,0
+Cervical squamous cell carcinoma and endocervical adenocarcinoma,CESC,0
+Cholangiocarcinoma,CHOL,0
+Colon adenocarcinoma,COAD,
+Esophageal carcinoma,ESCA,
+FFPE Pilot Phase II,FPPP,
+Glioblastoma multiforme,GBM,
+Head and Neck squamous cell carcinoma,HNSC,
+Kidney Chromophobe,KICH,
+Kidney renal clear cell carcinoma,KIRC,
+Kidney renal papillary cell carcinoma,KIRP,
+Liver hepatocellular carcinoma,LIHC,0
+Lung adenocarcinoma,LUAD,0
+Lung squamous cell carcinoma,LUSC,0
+Lymphoid Neoplasm Diffuse Large B-cell Lymphoma,DLBC,
+Mesothelioma,MESO,
+Ovarian serous cystadenocarcinoma,OV,
+Pancreatic adenocarcinoma,PAAD,
+Pheochromocytoma and Paraganglioma,PCPG,
+Prostate adenocarcinoma,PRAD,
+Rectum adenocarcinoma,READ,
+Sarcoma,SARC,0
+Skin Cutaneous Melanoma,SKCM,0
+Stomach adenocarcinoma,STAD,0
+Testicular Germ Cell Tumors,TGCT,0
+Thymoma,THYM,
+Thyroid carcinoma,THCA,0
+Uterine Carcinosarcoma,UCS,
+Uterine Corpus Endometrial Carcinoma,UCEC,
+Uveal Melanoma,UVM,
