@@ -1,0 +1,50 @@
+
+# 텐서플로우 설치
+
+## 준비
+sudo apt-get update
+sudo apt-get install ssh -y
+sudo apt-get install git -y
+sudo apt-get install python-numpy swig python-dev -y
+sudo apt-get install libc6-dev -y 
+sudo apt-get install g++ -y
+sudo apt-get install zlib1g-dev  -y
+
+
+## Installing from sources
+
+git clone --recurse-submodules https://github.com/tensorflow/tensorflow
+
+
+## Installation for Linux
+
+### Install Bazel
+
+http://bazel.io/docs/install.html
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get -y update
+sudo apt-get -y install oracle-java8-installer
+
+wget https://github.com/bazelbuild/bazel/releases/download/0.2.0/bazel-0.2.0-installer-linux-x86_64.sh
+chmod +x bazel-0.2.0-installer-linux-x86_64.sh
+./bazel-0.2.0-installer-linux-x86_64.sh --user
+vi ~/.bashrc 
+export PATH="$PATH:$HOME/bin"
+
+source ~/.bashrc 
+
+
+### Configure the installation
+cd ~/tensorflow
+./configure
+bazel build -c opt  //tensorflow/cc:tutorials_example_trainer ## CPU
+bazel build -c opt --config=cuda //tensorflow/cc:tutorials_example_trainer ## GPU
+
+bazel-bin/tensorflow/cc/tutorials_example_trainer
+
+### Create the pip package and install
+
+
+
+
