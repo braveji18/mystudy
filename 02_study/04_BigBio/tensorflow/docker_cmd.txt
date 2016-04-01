@@ -1,0 +1,11 @@
+
+
+docker-machine ip
+
+docker build -t unbuntu/bigbio   .
+
+docker run -i -t  -p 1022:22 --name bigbio unbuntu/bigbio /bin/bash
+
+docker rmi unbuntu/bigbio
+
+docker commit bigbio  unbuntu/bigbio
