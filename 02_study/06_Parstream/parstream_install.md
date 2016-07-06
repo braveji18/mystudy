@@ -7,18 +7,18 @@
 
 - centos6.x 
 
-> service iptables save
+># service iptables save
 
-> service iptables stop
+> # service iptables stop
 
-> chkconfig iptables off
+> # chkconfig iptables off
 
 
 ### 방화벽 정지
 
 - SELinux 비활성화
 
-> vi /etc/sysconfig/selinux
+> # vi /etc/sysconfig/selinux
 
 > SELINUX=disabled
 
