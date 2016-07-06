@@ -6,22 +6,22 @@
 ### 방화벽 정지
 
 - centos6.x 
-```
-service iptables save
-service iptables stop
-chkconfig iptables off
-```
+
+> service iptables save
+> service iptables stop
+> chkconfig iptables off
+
 
 ### 방화벽 정지
 
 - SELinux 비활성화
-```
-vi /etc/sysconfig/selinux
-SELINUX=disabled
 
-setenforce 0
-getenforce
-```
+> vi /etc/sysconfig/selinux
+> SELINUX=disabled
+
+> setenforce 0
+> getenforce
+
 
 ### 시간동기화
 
