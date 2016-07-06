@@ -8,7 +8,9 @@
 - centos6.x 
 
 > service iptables save
+
 > service iptables stop
+
 > chkconfig iptables off
 
 
@@ -17,9 +19,11 @@
 - SELinux 비활성화
 
 > vi /etc/sysconfig/selinux
+
 > SELINUX=disabled
 
 > setenforce 0
+
 > getenforce
 
 
