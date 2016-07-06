@@ -40,23 +40,24 @@ centos6.x
 
 centos6.x 
 
-- vi /etc/security/limits.conf
+> vi /etc/security/limits.conf
 
-> *    hard     nofile     131072
-
-> *    soft     nofile     131072
-
-> root hard     nofile     131072
-
-> root soft     nofile     131072
-
+```
+*    hard     nofile     131072
+*    soft     nofile     131072
+root hard     nofile     131072
+root soft     nofile     131072
+```
 
 ### max_map_count 커널 파타메타 설정
 
 centos6.x 
 
-- vi /etc/sysctl.conf
-> vm.max_map_count = 1966080
+>  vi /etc/sysctl.conf
+
+```
+vm.max_map_count = 1966080
+```
 
 > sysctl -p
 
@@ -76,13 +77,15 @@ parstream계정 로그인활성황
 > passwd parstream
 
 
-- parstream 환경설정
+parstream 환경설정
 
-> cat <<EOT >> /home/parstream/.bashrc
-> export PARSTREAM_HOME=/opt/parstream
-> export PATH=$PARSTREAM_HOME/bin:$PATH
-> export LD_LIBRARY_PATH=$PARSTREAM_HOME/lib:$LD_LIBRARY_PATH
-> EOT
+```
+cat <<EOT >> /home/parstream/.bashrc
+export PARSTREAM_HOME=/opt/parstream
+export PATH=$PARSTREAM_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$PARSTREAM_HOME/lib:$LD_LIBRARY_PATH
+EOT
+```
 
 > source /home/parstream/.bashrc
 
