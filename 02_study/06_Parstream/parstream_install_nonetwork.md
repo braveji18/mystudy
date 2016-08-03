@@ -175,3 +175,47 @@ default.url => jdbc:parstream://192.168.56.101:9043/visual
 sh 
 
 jupyter notebook --ip 0.0.0.0
+
+
+# UDF 만들기 
+- vi parstream.ini
+```
+udfLibraryPath = /opt/parstream/bin/udf
+
+[external.sh]
+command = /bin/sh %script %args
+```
+
+
+- vi test_udf.sh
+```
+#!/bin/sh
+
+oldIFS="$IFS"
+IFS=";"
+
+while read ROW
+do
+    split=($ROW)
+    outVal=""
+    for sp in "${split[@]}" ; do
+        outVal="${outVal}-${sp}"
+    done
+
+    echo "$outVal"
+    ##echo ${ROW//;/;}
+done
+
+IFS=$oldIFS
+```
+
+
+- pnc
+```
+CREATE FUNCTION test_sh('sh', 'test_udf.sh', 'ParStream', 'ParStream');
+SELECT * FROM test_sh ( ON ( select EC_KEY1, EC_KEY2, Tx_01_1, EC_KEY2 mod 1 AS aaa  from ED01 limit 10 )
+  PARTITION BY aaa
+  COMMAND_LINE_ARGS('debug=true')
+  RETURNS( EC_KEY1 varstring )
+);
+```
