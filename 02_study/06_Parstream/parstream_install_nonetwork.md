@@ -114,6 +114,7 @@ vm.max_map_count = 1966080
 centos6.x 
 
 > yum install -y libicu gpgme openssl
+
 > rpm -Uhv parstream-<version>.el6.x86_64.rpm
 
 

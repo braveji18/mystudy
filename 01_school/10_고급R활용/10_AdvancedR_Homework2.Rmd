@@ -1,0 +1,176 @@
+---
+title: "고급R활용 과제"
+output: html_document
+---
+
+# 1장 연습문제 
+## 4번 문제 : 자료 1.1을 이용하여 다음에 답하세요.
+### (1) 남녀별 값 m은 1로, f는 2로 변환하고, 각각 도수를 구하시요. 
+
+
+
+### (2) 변수 "종교"에서 1과 2를 1로, 3은 2로 변환한 새로운 변수를 만들고, 각 값에 적합한 라벨을 지정하시요.
+
+```{r}
+#install.packages("car")
+library(car)
+insurance.data$religion2 <- recode( insurance.data$religion, "2=1;3=2"  )
+head( insurance.data, n=7 )
+str( insurance.data)
+insurance.data$religion2 <- factor( insurance.data$religion2, level=c(1:2), labels=c("유", "무"))
+head( insurance.data, n=8 )
+```
+
+### (3) 보험금애글 로그변화한 새로운 변수를 만드시요.
+```{r}
+insurance.data$amount_log <- log(insurance.data$amount)
+head( insurance.data )
+```
+
+
+### (4) 보험금액과 월수입의 산점도 및 (3)에서 로그변환한 변수와 월수입의 산점도를 그리시오.
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+ggplot(data=insurance.data, aes(x=insurance.data$amount, y=insurance.data$salary)) + 
+   geom_point(shape=19, size=3, colour="red") +
+   ggtitle("보험금액과 월수입의 산점도")
+
+ggplot(data=insurance.data, aes(x=insurance.data$amount_log, y=insurance.data$salary)) + 
+   geom_point(shape=19, size=3, colour="blue") +
+   ggtitle("로그변환한 보험금액과 월수입의 산점도")
+```
+
+
+### (5) 남자인 경우만을 택하여 위 (4)번을 시앵하시오.
+```{r}
+
+index_m <- which(insurance.data$sex == "m")
+insurance.man.data <- insurance.data[ index_m, ]
+head(insurance.man.data)
+
+ggplot(data=insurance.man.data, aes(x=amount, y=salary)) + 
+   geom_point(shape=19, size=3, colour="red") +
+   ggtitle("남자의 보험금액과 월수입의 산점도")
+
+ggplot(data=insurance.man.data, aes(x=amount_log, y=salary)) + 
+   geom_point(shape=19, size=3, colour="blue") +
+   ggtitle("남자의 로그변환한 보험금액과 월수입의 산점도")
+
+```
+
+
+### (6) 여자의 경우만을 택하여 위 (4)번을 시앵하시오.
+```{r}
+index_f <- which(insurance.data$sex == "f")
+insurance.female.data <- insurance.data[ index_f, ]
+head(insurance.female.data)
+
+ggplot(data=insurance.female.data, aes(x=amount, y=salary)) + 
+   geom_point(shape=19, size=3, colour="red") +
+   ggtitle("여자의 보험금액과 월수입의 산점도")
+
+ggplot(data=insurance.female.data, aes(x=amount_log, y=salary)) + 
+   geom_point(shape=19, size=3, colour="blue") +
+   ggtitle("여자의 로그변환한 보험금액과 월수입의 산점도")
+```
+
+
+### (7) 위 (5)와 (6)의 산점도를 한 화면에 겹친 그림으로 그려 보시오.
+```{r}
+ggplot(data=insurance.data, aes(x=amount, y=salary, , colour=sex)) + 
+   geom_point(shape=19, size=3) +
+   ggtitle("보험금액과 월수입의 산점도")
+
+ggplot(data=insurance.data, aes(x=amount_log, y=salary, , colour=sex)) + 
+   geom_point(shape=19, size=3) +
+   ggtitle("로그변환한 보험금액과 월수입의 산점도")
+```
+
+
+## 5번 문제 : R패키지 hflights에 있는 데이터세트 hflights를 dplyr을 이용하여 데이터처리를 하고자 한다.
+```{r}
+#install.packages("dplyr")
+library(dplyr)
+#install.packages("hflights")
+library(hflights)
+```
+
+### (1) dim(hflights)의 결과를 보이시오.
+```{r}
+dim(hflights)
+```
+
+### (2) 다음을 수행한 결과를 보이시오.
+```{r}
+flights <- tbl_df(hflights)
+filter(flights, Month==1, DayofMonth==1)
+filter(flights, UniqueCarrier=="AA" | UniqueCarrier=="UA")
+```
+
+### (3) 다음을 수행한 결과를 보이시오.
+```{r}
+select(flights, DepTime, ArrTime, FlightNum)
+```
+
+### (4) 변수(Distance, AirTime)를 선택하고, Speed=Distance/AirTime*60 을 포함한 변수(Distance, AirTime, Speed)이 결과를 보이시오.
+```{r}
+flights_s <-  select(flights, Distance, AirTime)
+mutate(flights_s, Speed=Distance/AirTime*60 )
+```
+
+### (5) 변수 Dest별로 연착시간(ArrDelay)의 평균을 보이시오.
+```{r}
+flights_g <- group_by(flights, Dest)
+summarize(flights_g, arrMean=mean(ArrDelay, na.rm=TRUE) )
+```
+
+### (4)번과 (5)번을 chain 기능을 이용하여 작업해 보시오.
+```{r}
+flights %>%
+  select(Distance, AirTime) %>%
+  mutate( Speed=Distance/AirTime*60 )
+
+
+flights %>%
+   group_by(Dest) %>%
+   summarize(arrMean=mean(ArrDelay, na.rm=TRUE) )
+```
+
+# 2장 연습문제 
+## 3번 문제 : 자유도가 v인 카이제곱분포를 따르는 확률변수 X의 기댓값과 분산은 각각 v 및 2v이다. 자유도가 10인 카이제곱분포로부터 500개의 난수를 생성하여 기댓값과 분산이 각각 10과 20에 근접한 값이 나오는지 살펴보시오.
+```{r}
+chisq_10 <- rchisq(500, 10)
+head(chisq_10, n=20)
+mean( chisq_10 )
+var( chisq_10 )
+```
+
+# 3장 연습문제 
+## 8번 문제 : 네그룹의 평균차이를 검정하기 위해 각 그룹의 자료를 얻었더니 다음과 같았다. one-way.test함수를 사용하여 검정하시오.
+```{r}
+y <- c(11, 10,  8, 11, 10, 10, 11, 11, 10, 9,
+    11, 11,  9, 11, 12, 13, 9,  10, 11, 10,
+    12, 14, 10, 12, 10, 12, 12, 12, 11, 12,
+    11, 10, 8,  11, 11, 9,  10, 11, 11, 10)
+  )
+x <- c( 
+  rep(1,10),
+  rep(2,10),
+  rep(3,10),
+  rep(4,10)
+  )
+oneway.test(y ~ x, var.equal=T)
+```
+
+
+# 4장 연습문제 
+## 7번 문제 : 
+```{r}
+
+```
+
+## 8번 문제 : 
+```{r}
+
+```
