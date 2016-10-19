@@ -1,0 +1,17 @@
+city,smoking,lung_cancer,health
+Beijing,y,126,100
+Beijing,n,35,61
+Shanghai,y,908,688
+Shanghai,n,497,807
+Shenyang,y,913,747
+Shenyang,n,336,598
+Nanjing,y,235,172
+Nanjing,n,58,121
+Harbin,y,402,308
+Harbin,n,121,215
+Zhengzhou,y,182,156
+Zhengzhou,n,72,98
+Taiyuan,y,60,99
+Taiyuan,n,11,43
+Nanchang,y,104,89
+Nanchang,n,21,36
