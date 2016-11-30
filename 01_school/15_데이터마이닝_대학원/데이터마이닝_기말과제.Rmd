@@ -163,16 +163,172 @@ table(
 ### iris 자료를 이용하여 setosa종 여부를 판정하는 나무모형을 R를 이용하여 작성하고 분석하시오.
 
 ```{r}
-summary( iris )
+library(dplyr)
+
+ir.raw_data <- iris
+ir.data <-  ir.raw_data %>%
+  mutate( newSpecies = ifelse( Species   == "setosa" , 1, 0 )  )
+summary(ir.data)
 ```
 
 
+```{r}
+ir.tr <- rpart(newSpecies~ Sepal.Length + Sepal.Width + Petal.Length +  Petal.Width    , data=ir.data , method="class")
+ir.tr 
+```
+```{r}
+fancyRpartPlot( ir.tr )
+```
 
 
-12강 연습문제 3번, 4번
-13강 연습문제 1번, 5번
-14강 연습문제 4번 
+** 첫번째 root node에서 Petal.Length>=2.45 일때 모두 setosa가 아니고 Petal.Length< 2.45 일때는 모두 setosa로 분류됨.  **
+
+##  12강 3번
+### 자료의 표준화 방법에 대하여 설명하시오.
+
+- 1. 자료의 표준화가 필요한 이유 
+    - 변수마다 범위가 다르면, 의도하기 않게 범위가 큰 변수는 모델에 더 많은 영향을 주고, 범위가 작은 변수는 덜 영향을 주게됨.
+    - 모든 변수가 동일한 영향을 주기 위해서 필요함.
+    
+- 2. 연속형 변수의 표준화
+    - 1) 0-1 표준화 : 입력변수값이 0과 1사이에 있도록 값을 조정하는 방법.
+$$
+ newX  = {x - min \over  max - min }
+$$
+    - 2) z-표준화 : 변수가 정규분포가 되도록 변환
+$$
+ z = {x - \mu \over \sigma}
+$$
+    - 3) 연속형 자료의 최대값은 예상보다 조금 크게, 최소값은 예상보다
+조금 작게 정함.
+    - 4) 분포가 대칭이 아닌 경우 변환을 통해 대칭: 로그변환 등이 이용됨.
+- 3. 범주형 자료의 표준화
+    - 1) 순서가 있는 자료의 변환 : 연속형 자료처럼 표준화하여 0과 1사이 값으로 전환.
+        - 방법1 : 예를 들어 0, 1, 2, 3, 4, 5의 값이 있다면 0은 0으로,
+1은 0.2로, 2는 0.4, 3은 0.6, 4는 0.8로 정함.
+        - 방법2 : 온도계식 방법을으로 예를 들어 기업평가의 값이 A, B, C, D, F라면 다음과 같이숫자값으로 변환.
+
+> F ->  00000 ->  0           
+
+> D ->  10000 -> 0.5
+
+> C -> 11000 -> 0.5 + 0.25 = 0.75 
+
+> B -> 11100 -> 0.5 + 0.25 + 0.125 = 0.875
+
+> A -> 11110 -> 0.5 + 0.25 + 0.125 + 0.0625 = 0.9375
+ 
+  - 2) 성별과 같은 범주형자료의 경우 : 성별 관련 변수라면 남성 변수와 여성변수를
+따로 만들고 해당 성이면 1 아니면 0으로 지정
 
 
+##  12강 4번
+### 신경망과 나무모형을 비교하시오.  
 
+** 신경망 **
+- 장점
+    - 다른 분류 모형보다 예측력 측면에서 우수.
+- 단점
+    - 모형을 설명할 수 없으며, 과적합이 잘 발생.
+    - 은닉층과 노드를 증가시킬수록 데이터가 많이 필요하고 계산량이 비약적으로 증가함.
+    
+** 나무모형   **
+- 장점
+    - 모형에 대한 설명이 쉬움
+    - 비선형문제도 비교적 잘 풀수 있음
+- 단점
+    - 변수가 많아지면 계산량이 많이 필요.
+
+
+##  13강 1번
+### R를 이용하여 cos(30x) (0< x < 1)의 출력자료 100개를 만들고 이를 신경망을 통해 적합하시오.
+
+```{r eval=FALSE}
+install.packages("nnet", repos = "http://cran.nexr.com" )
+```
+
+```{r}
+library(nnet)
+
+data.inp <- (1:100)/ 100
+data.cos <- cos( data.inp * 30 )
+plot(data.inp , data.cos)
+```
+
+```{r}
+nnet_fit <- function(n) {
+
+    data.nn <- nnet(data.cos ~ data.inp, size=n, decay=0.001, linout=T, rang=2, maxit=5000)
+    plot(predict(data.nn))
+    lines(data.cos)
+}
+```
+
+```{r}
+nnet_fit( 5 )
+```
+
+```{r}
+nnet_fit( 7 )
+```
+
+```{r}
+nnet_fit( 9 )
+```
+
+** 은닉층의 마디를 9개를 했을때 가장 잘 적합함 **
+
+##  13강 5번
+## 한 백화점의 어느 상품매장을 방문하는 20명을 조사해보니 구매하는 사람(G1 )이 10명이고, 구매하지 않는 사람이 (G2 )이 10명이었다. 이들 20명의 성별, 차 보유여부, 집 보유여부, 구매여부를 분석하여보니 아래와 같다. R를 이용한 신경망으로 분류모형을 적합하고, 이 상품매장을 방문한 여자고객이 중형차를 보유하고, 또 집을 소유하였다면 상품을 구매할 사람인지 아닌지 분류하라.   
+
+```{r}
+library(dplyr)
+(stores <- read.csv('13_05.csv', header = TRUE) )
+
+stores.nn <- nnet(buy ~ gender + car + house ,
+                  data=stores, size=2, decay=0.001, linout=T, 
+                  rang=2,maxit=500)
+
+summary( stores.nn )
+
+stores.pred = (predict(stores.nn, stores) >= 0.5)
+table(stores.pred, stores$buy )
+```
+
+은닉층 마디의 개수가 증가하더라도 예측력이 좋아지지 않기 때문에 size=2로 함.
+
+
+```{r}
+cust1 <- data.frame(gender=c(0) , car=c(1 ), house=c(1) )
+predict(stores.nn, cust1 )  >= 0.5
+```
+
+** 여자고객이 중형차를 보유하고, 또 집을 소유하였다면 구매로 분류됨**
+
+
+##  14강 4번 
+### 빅 데이터 분석 활용 사례를 3가지만 조사하여 설명하시오.
+
+1. 포스코ICT, 사물인터넷·빅데이터 결합한 스마트팩토리 신성장동력으로 육성
+
+> 빅데이터 분석을 통해 불량률을 낮추고 생산 효율을 향상하기 위한 목적으로 포항제철소 2열연, 광양제철소 4열연 공장에 빅데이터 플랫폼을 구축함.
+
+    - http://www.etnews.com/20150211000244
+    - http://www.hellot.net/_UPLOAD_FILES/conference/smartA/smartA_4.pdf
+
+
+2. 유전체 빅데이터 연구
+
+> 국가생명연구자원정보센터(KOBIC)의 경우, 현재 진행 되고 있는 다부처 유전체 사업을 통해 생성되는 유전체 빅데이터를 각 부처의 정보기관으로부터 연계 받아 통합 관리 및 정보 분양을 할 수 있는 시스템(Genome Infranet)을 현재 구축 중에 있으며, 국내외에서 생산 된 다양한 유전체 빅데이터를 수집하고 이를 이용한 비교유전체학(Comparative genomics) 분석을 할 수 있는 오믹스 포탈인 Prometheus를 구축
+
+     - http://m.bioin.or.kr/board.do?num=249060&bid=report&cmd=view
+     
+
+3. 경기도와 수원시 등 CCTV 빅데이터 범죄 예방에 활용
+
+> 경기도의 제안으로 추진 중인 이번 과제는 수원시 전역에 분포된 보안등과 CCTV 데이터를 분석해 사각지대를 최소화하는 것을 목표로 하고 있다. 
+또 주민들이 자주 찾는 하천변과 산책로, 단독주택 밀집지역, 학교 주변 등을 대상으로 CCTV와 보안등 설치 유무를 확인할 예정이다. 
+경기도 등은 데이터 분석 결과를 토대로 보안등과 CCTV 설치 위치를 조정하거나 추가로 설치해 범죄 예방효과를 높일 계획이다. 
+
+    - http://www.nocutnews.co.kr/news/4340546#csidx4c63f9d97f7e9e09bb18eea46dbb84f 
 
