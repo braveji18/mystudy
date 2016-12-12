@@ -1,0 +1,6 @@
+# Ignore source materials
+# Ignore scratch notes
+*.notes
+
+# Ignore OSX files
+.DS_Store
