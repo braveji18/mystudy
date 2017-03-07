@@ -1,5 +1,8 @@
 
-# https://www.cloudera.com/documentation/enterprise/latest/topics/cm_sg_create_key_trust.html
+# 참고자료
+- https://www.cloudera.com/documentation/enterprise/latest/topics/cm_sg_create_key_trust.html
+- https://www.lesstif.com/pages/viewpage.action?pageId=6979614
+- https://support.ssl.com/Knowledgebase/Article/View/19/0/der-vs-crt-vs-cer-vs-pem-certificates-and-how-to-convert-them
 
 # Level 0: Basic TLS/SSL Configuration
 
