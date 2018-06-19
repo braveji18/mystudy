@@ -40,9 +40,9 @@ nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/
 ######################################################################
 ## repel
 ######################################################################
-nohup  wget -P /var/www/html/repel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ &
+nohup  wget -P /var/www/html/repel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ > repel.log 2>&1&
 OR
-nohup  reposync  --download_path=/var/www/html/repel  &
+nohup  reposync  --download_path=/var/www/html/repel > repel.log 2>&1&
 
 
 ######################################################################
@@ -60,19 +60,19 @@ do
 done < packages.txt
 
 
-nohup  sh /var/www/html/conda/download.sh &
+nohup  sh /var/www/html/conda/download.sh > conda.log 2>&1&
 
 
 ######################################################################
-## R 
+## R healthstat.snu.ac.kr/CRAN/  cran.biodisk.org/
 ######################################################################
-nohup rsync -rtlzv --delete cran.r-project.org::CRAN /var/www/html/r-mirror &
+nohup rsync -rtlzv --delete cran.biodisk.org::CRAN /var/www/html/r-mirror > r.log 2>&1&
 
 
 ######################################################################
 ## ubuntu
 ######################################################################
-nohup rsync -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror &
+nohup rsync -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror > ubuntu.log 2>&1&
 
 
 
@@ -97,6 +97,6 @@ bandersnatch/bin/pip install -r https://bitbucket.org/pypa/bandersnatch/raw/stab
 vi /etc/bandersnatch.conf 
 directory = /var/www/html/python-mirror
 
-nohup /var/www/html/bandersnatch/bin/bandersnatch mirror &
+nohup /var/www/html/bandersnatch/bin/bandersnatch mirror > python.log 2>&1&
 
 
