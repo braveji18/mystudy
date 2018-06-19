@@ -64,9 +64,9 @@ nohup  sh /var/www/html/conda/download.sh > conda.log 2>&1&
 
 
 ######################################################################
-## R healthstat.snu.ac.kr/CRAN/  cran.biodisk.org/
+## R 
 ######################################################################
-nohup rsync -rtlzv --delete cran.biodisk.org::CRAN /var/www/html/r-mirror > r.log 2>&1&
+nohup rsync -rtlzv --delete cran.r-project.org::CRAN /var/www/html/r-mirror > r.log 2>&1&
 
 
 ######################################################################
