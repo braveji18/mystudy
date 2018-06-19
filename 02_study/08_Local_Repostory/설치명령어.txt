@@ -1,0 +1,102 @@
+
+
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+yum install -y net-tools  wget 
+wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pssh-2.3.1-5.el7.noarch.rpm
+yum install -y pssh-2.3.1-5.el7.noarch.rpm
+
+
+yum install -y httpd
+
+
+mkdir -p /var/www/html/cdh
+mkdir -p /var/www/html/cm
+mkdir -p /var/www/html/centos7.x
+mkdir -p /var/www/html/repel
+mkdir -p /var/www/html/r-mirror
+mkdir -p /var/www/html/conda
+mkdir -p /var/www/html/python-mirror
+mkdir -p /var/www/html/ubuntu-mirror
+
+######################################################################
+## CDH
+######################################################################
+nohup wget -P /var/www/html/cdh https://archive.cloudera.com/cdh5/parcels/latest/CDH-5.15.0-1.cdh5.15.0.p0.21-el7.parcel &
+nohup wget -P /var/www/html/cdh https://archive.cloudera.com/cdh5/parcels/latest/CDH-5.15.0-1.cdh5.15.0.p0.21-el7.parcel.sha1 &
+nohup wget -P /var/www/html/cdh https://archive.cloudera.com/cdh5/parcels/latest/manifest.json & 
+
+
+######################################################################
+## CM
+######################################################################
+nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/cloudera-manager-agent-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
+nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/cloudera-manager-daemons-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
+nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/cloudera-manager-server-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
+nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/cloudera-manager-server-db-2-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
+nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/enterprise-debuginfo-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
+
+
+######################################################################
+## repel
+######################################################################
+nohup  wget -P /var/www/html/repel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ &
+OR
+nohup  reposync  --download_path=/var/www/html/repel  &
+
+
+######################################################################
+## CONDA
+######################################################################
+vi /var/www/html/conda/download.sh
+#!/bin/sh
+
+cd /var/www/html/conda/ 
+
+while read PKG SIZE
+do
+    curl -O   https://repo.continuum.io/pkgs/main/linux-64/${PKG}
+
+done < packages.txt
+
+
+nohup  sh /var/www/html/conda/download.sh &
+
+
+######################################################################
+## R 
+######################################################################
+nohup rsync -rtlzv --delete cran.r-project.org::CRAN /var/www/html/r-mirror &
+
+
+######################################################################
+## ubuntu
+######################################################################
+nohup rsync -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror &
+
+
+
+######################################################################
+## python
+######################################################################
+yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+
+yum search python36
+
+yum install -y python36u python36u-libs python36u-devel python36u-pip
+
+which python3.6 
+
+cd /var/www/html/
+
+python3.6 -m venv bandersnatch
+bandersnatch/bin/pip install -r https://bitbucket.org/pypa/bandersnatch/raw/stable/requirements.txt
+
+/var/www/html/bandersnatch/bin/bandersnatch mirror
+
+vi /etc/bandersnatch.conf 
+directory = /var/www/html/python-mirror
+
+nohup /var/www/html/bandersnatch/bin/bandersnatch mirror &
+
+
