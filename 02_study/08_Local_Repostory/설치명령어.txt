@@ -1,7 +1,3 @@
-
-
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
 yum install -y net-tools  wget 
 wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pssh-2.3.1-5.el7.noarch.rpm
 yum install -y pssh-2.3.1-5.el7.noarch.rpm
@@ -12,9 +8,12 @@ yum install -y httpd
 
 mkdir -p /var/www/html/cdh
 mkdir -p /var/www/html/cm
+mkdir -p /var/www/html/cm6
+mkdir -p /var/www/html/cdsw
+mkdir -p /var/www/html/SPARK2
 mkdir -p /var/www/html/centos7.x
 mkdir -p /var/www/html/repel
-mkdir -p /var/www/html/r-mirror
+mkdir -p /var/www/html/cran
 mkdir -p /var/www/html/conda
 mkdir -p /var/www/html/python-mirror
 mkdir -p /var/www/html/ubuntu-mirror
@@ -28,7 +27,7 @@ nohup wget -P /var/www/html/cdh https://archive.cloudera.com/cdh5/parcels/latest
 
 
 ######################################################################
-## CM
+## CM5
 ######################################################################
 nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/cloudera-manager-agent-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
 nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/5.15.0/RPMS/x86_64/cloudera-manager-daemons-5.15.0-1.cm5150.p0.62.el7.x86_64.rpm &
@@ -38,11 +37,39 @@ nohup wget -P /var/www/html/cm https://archive.cloudera.com/cm5/redhat/7/x86_64/
 
 
 ######################################################################
+## CM6
+######################################################################
+nohup wget -P /var/www/html/cm6  https://archive.cloudera.com/cm6/6.0.0-beta1/redhat7/yum/RPMS/x86_64/cloudera-manager-agent-6.0.0-338129.el7.beta1.x86_64.rpm & 
+nohup wget -P /var/www/html/cm6 https://archive.cloudera.com/cm6/6.0.0-beta1/redhat7/yum/RPMS/x86_64/cloudera-manager-daemons-6.0.0-338129.el7.beta1.x86_64.rpm & 
+nohup wget -P /var/www/html/cm6 https://archive.cloudera.com/cm6/6.0.0-beta1/redhat7/yum/RPMS/x86_64/cloudera-manager-server-6.0.0-338129.el7.beta1.x86_64.rpm & 
+nohup wget -P /var/www/html/cm6 https://archive.cloudera.com/cm6/6.0.0-beta1/redhat7/yum/RPMS/x86_64/cloudera-manager-server-db-2-6.0.0-338129.el7.beta1.x86_64.rpm & 
+nohup wget -P /var/www/html/cm6 https://archive.cloudera.com/cm6/6.0.0-beta1/redhat7/yum/RPMS/x86_64/oracle-j2sdk1.8-1.8.0+update141-1.x86_64.rpm & 
+
+
+
+######################################################################
+## CDSW
+######################################################################
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/csd/CLOUDERA_DATA_SCIENCE_WORKBENCH-1.3.0.jar &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/parcels/latest/CDSW-1.3.0.p1.244221-el7.parcel &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/parcels/latest/CDSW-1.3.0.p1.244221-el7.parcel.sha1 &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/parcels/latest/manifest.json &
+
+
+######################################################################
+## SPARK2
+######################################################################
+nohup wget -P /var/www/html/SPARK2 http://archive.cloudera.com/spark2/parcels/2.3.0.cloudera2/SPARK2-2.3.0.cloudera2-1.cdh5.13.3.p0.316101-el7.parcel &
+nohup wget -P /var/www/html/SPARK2 http://archive.cloudera.com/spark2/parcels/2.3.0.cloudera2/SPARK2-2.3.0.cloudera2-1.cdh5.13.3.p0.316101-el7.parcel.sha1  &
+nohup wget -P /var/www/html/SPARK2 http://archive.cloudera.com/spark2/parcels/2.3.0.cloudera2/manifest.json  &
+nohup wget -P /var/www/html/SPARK2 http://archive.cloudera.com/spark2/csd/SPARK2_ON_YARN-2.3.0.cloudera2.jar   &
+
+######################################################################
 ## repel
 ######################################################################
-nohup  wget -P /var/www/html/repel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ > repel.log 2>&1&
+nohup  wget -P /var/www/html/repel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ > repel.log   &
 OR
-nohup  reposync  --download_path=/var/www/html/repel > repel.log 2>&1&
+nohup  reposync  --download_path=/var/www/html/repel > repel.log   &
 
 
 ######################################################################
@@ -65,20 +92,23 @@ nohup  sh /var/www/html/conda/download.sh > conda.log 2>&1&
 
 ######################################################################
 ## R 
+## https://cran.r-project.org/mirror-howto.html
 ######################################################################
-nohup rsync -rtlzv --delete cran.r-project.org::CRAN /var/www/html/r-mirror > r.log 2>&1&
+nohup rsync --bwlimit=100  -rtlzv --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
+
+nohup rsync --bwlimit=100  -rtlzv --exclude 'bin'  --exclude 'contrib' --exclude 'doc'  --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
 
 
 ######################################################################
 ## ubuntu
 ######################################################################
-nohup rsync -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror > ubuntu.log 2>&1&
-
+nohup rsync --bwlimit=100 -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror > ubuntu.log   &
 
 
 ######################################################################
 ## python
 ######################################################################
+yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 
 yum search python36
@@ -97,6 +127,6 @@ bandersnatch/bin/pip install -r https://bitbucket.org/pypa/bandersnatch/raw/stab
 vi /etc/bandersnatch.conf 
 directory = /var/www/html/python-mirror
 
-nohup /var/www/html/bandersnatch/bin/bandersnatch mirror > python.log 2>&1&
+nohup /var/www/html/bandersnatch/bin/bandersnatch mirror > python.log   &
 
 
