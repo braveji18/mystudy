@@ -16,13 +16,11 @@ dracut -v /boot/initramfs-$(uname -r).img $(uname -r)
 yum update -y
 reboot
 
-
-
 # Set Up the Operating System and Kernel
 yum install -y flex gcc gcc-c++  redhat-rpm-config strace \
   rpm-build make pkgconfig gettext automake strace64 \
   gdb bison libtool autoconf gcc-c++ gcc-gfortran \
-  binutils rcs patchutils
+  binutils rcs patchutils wget 
 
 yum install -y kernel-devel-`uname -r`
 
@@ -46,7 +44,7 @@ yum install -y nvidia-docker-1.0.1-1.x86_64.rpm
 systemctl start nvidia-docker
 systemctl enable nvidia-docker
 
-nvidia-docker run --rm nvidia/cuda:9.1-cudnn7-runtime  nvidia-smi
+nvidia-docker run --rm nvidia/cuda:9.1-cudnn7-runtime  nvidia-smi  # 수정
 
 ls -l  /var/lib/nvidia-docker/volumes/nvidia_driver/$NVIDIA_DRIVER_VERSION/ 
 
@@ -122,14 +120,39 @@ docker push goodmit/cdsw-cuda:2
 
 
 
+# tensorflow-GPU 설치 및 테스트
+!pip3 install tensorflow-gpu==1.3.0rc0
+!pip3 install tensorflow-gpu==1.4.0rc0
+
+import tensorflow as tf
+tf.__version__
+
+a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name='a')
+b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name='b')
+c = tf.matmul(a, b)
+
+# Creates a session with log_device_placement set to True.
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
+# Runs the operation.
+print(sess.run(c))
+
+# Prints a list of GPUs available 
+from tensorflow.python.client import device_lib
+def get_available_gpus():
+    local_device_protos = device_lib.list_local_devices()
+    return [x.name for x in local_device_protos if x.device_type == 'GPU']
+
+print( get_available_gpus() )
 
 
+# pyTorch 설치 및 테스트
+!pip3 install http://download.pytorch.org/whl/cu75/torch-0.1.12.post2-cp36-cp36m-linux_x86_64.whl 
+!pip3 install torchvision
 
-
-
-
-
-
-
-
+import torch
+x = torch.FloatTensor([[1,2,3],[4,5,6]])
+x
+x_gpu = x.cuda()
+x_gpu
 

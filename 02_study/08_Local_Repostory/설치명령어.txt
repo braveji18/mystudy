@@ -50,11 +50,12 @@ nohup wget -P /var/www/html/cm6 https://archive.cloudera.com/cm6/6.0.0-beta1/red
 ######################################################################
 ## CDSW
 ######################################################################
-nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/csd/CLOUDERA_DATA_SCIENCE_WORKBENCH-1.3.0.jar &
-nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/parcels/latest/CDSW-1.3.0.p1.244221-el7.parcel &
-nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/parcels/latest/CDSW-1.3.0.p1.244221-el7.parcel.sha1 &
-nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw/1/parcels/latest/manifest.json &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/parcels/CDSW-1.4.0.p1.431664-el7.parcel &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/parcels/CDSW-1.4.0.p1.431664-el7.parcel.sha &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/parcels/manifest.json &
+nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/csd/CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH5-1.4.0.jar &
 
+### dd if=/dev/zero of=/dev/sdb bs=1M count=10
 
 ######################################################################
 ## SPARK2
@@ -94,15 +95,15 @@ nohup  sh /var/www/html/conda/download.sh > conda.log 2>&1&
 ## R 
 ## https://cran.r-project.org/mirror-howto.html
 ######################################################################
-nohup rsync --bwlimit=100  -rtlzv --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
+nohup rsync --bwlimit=1000  -rtlzv --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
 
-nohup rsync --bwlimit=100  -rtlzv --exclude 'bin'  --exclude 'contrib' --exclude 'doc'  --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
+nohup rsync --bwlimit=1000  -rtlzv --exclude 'bin'  --exclude 'contrib' --exclude 'doc'  --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
 
 
 ######################################################################
 ## ubuntu
 ######################################################################
-nohup rsync --bwlimit=100 -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror > ubuntu.log   &
+nohup rsync --bwlimit=1000 -rtlzv --delete ftp.neowiz.com::ubuntu  /var/www/html/ubuntu-mirror > ubuntu.log   &
 
 
 ######################################################################
