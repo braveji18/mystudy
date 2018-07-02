@@ -1,0 +1,18 @@
+# CDSW R패키지 설치 및 확인
+
+vi R_v1.Dockerfile
+#####################################################################
+### R_v1.Dockerfile
+FROM  docker.repository.cloudera.com/cdsw/engine:5
+
+
+RUN wget https://cran.r-project.org/src/contrib/Archive/xgboost/xgboost_0.71.1.tar.gz
+RUN RCMD INSTALL xgboost_0.71.1.tar.gz
+RUN rm -f *.tar.gz
+#####################################################################
+
+docker build --network host -t goodmit/cdsw-r:1 . -f R_v1.Dockerfile
+
+
+packinfo <- installed.packages(fields = c("Package", "Version"))
+packinfo[,c("Package", "Version")]
