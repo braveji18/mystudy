@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 ###############################
@@ -70,6 +69,7 @@ CDSW 재시작
 # Create a Custom CUDA-capable Engine Image
 
 vi cuda.Dockerfile
+###########################################################
 FROM  docker.repository.cloudera.com/cdsw/engine:4
 
 RUN NVIDIA_GPGKEY_SUM=d1be581509378368edeec8c1eb2958702feedf3bc3d17011adbf24efacce4ab5 && \
@@ -113,13 +113,22 @@ LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 RUN apt-get update && apt-get install -y --no-install-recommends \
             libcudnn6=$CUDNN_VERSION-1+cuda8.0 && \
     rm -rf /var/lib/apt/lists/*
-
+###########################################################
 
 docker build --network host -t goodmit/cdsw-cuda:2 . -f cuda.Dockerfile
-docker build --network host -t goodmit/cdsw-cuda:3 . -f cuda_v3.Dockerfile
-#docker build --network host -t goodmit/cdsw-conda:2 . -f conda.Dockerfile
-#docker push goodmit/cdsw-cuda:2
 
+
+vi cuda_v3.Dockerfile
+###########################################################
+FROM  goodmit/cdsw-cuda:2
+
+RUN mkdir -p /opt/conda/envs/python3.6
+RUN conda install -y tensorflow-gpu pandas  pytorch keras h2o  python=3.6.1 -n python3.6
+###########################################################
+
+docker build --network host -t goodmit/cdsw-cuda:3 . -f cuda_v3.Dockerfile
+
+#docker push goodmit/cdsw-cuda:2
 
 
 # tensorflow-GPU 설치 및 테스트
