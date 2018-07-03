@@ -1,6 +1,8 @@
+## CDSW의 python과 R에서  Impala 사용하기 위한 설정 방법
 
-# CDSW에서 impala for python
+# 참고 문서
 # https://github.com/cloudera/impyla
+# https://blog.cloudera.com/blog/2017/07/implyr-r-interface-for-apache-impala/
 
 
 vi impala.Dockerfile
