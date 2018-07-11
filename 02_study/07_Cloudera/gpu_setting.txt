@@ -1,0 +1,6 @@
+
+# https://github.com/floydhub/dl-docker
+# https://github.com/jupyterhub/jupyterhub
+# https://github.com/PHI-Toolkit/docker-jupyterhub/blob/master/Dockerfile
+docker build --network host -t goodmit/jupyterhub:1 . -f jupyterhub.Dockerfile
+docker run -p 8000:8000 -d --name pydata-jupyterhub goodmit/pydata-jupyterhub jupyterhub

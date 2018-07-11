@@ -3,7 +3,7 @@
 
 HTTP_ROOT="/var/www/html"
 
-REPO_SERVER="192.168.2.11"
+REPO_SERVER="10.10.1.145"
 
 ###############################
 ## Local 레파지토리 생성

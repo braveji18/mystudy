@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-CM_SERVER="ai01.goodmit.co.kr"
+CM_SERVER="big01.goodmit.co.kr"
 
 ###############################
 # Java 설치
@@ -71,10 +71,10 @@ pscp -h /root/allnodes  /root/mysql-connector-java.jar  /usr/share/java/
 ###############################
 # Database 만들기
 ###############################
-mysql -u root -p   <  /root/create_db.sql 
+MY_PW=Goodmit0802!
 
-# "Goodmit0802!"
-mysql -u root -p  -e "show databases"
+mysql -u root -p${MY_PW}   <  /root/create_db.sql 
+mysql -u root -p${MY_PW}  -e "show databases"
 
 
 ###############################

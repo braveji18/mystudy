@@ -10,6 +10,7 @@ HTTP_ROOT="/var/www/html"
 #fdisk -l
 mkdir -p ${USB_DIR}
 mount /dev/sdc1 ${USB_DIR}
+#mount -t iso9660 -o loop /root/CentOS-7-x86_64-DVD-1708.iso ${USB_DIR}
 ls -l ${USB_DIR}
 
 ###############################

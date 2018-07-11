@@ -1,0 +1,28 @@
+
+###################################################
+# ML Docker의 Base 이미지 생성
+###################################################
+
+username=goodmit
+adduser ${username}
+passwd ${username}
+docker volume create jupyterhub-user-${username}
+
+docker build --network host -t goodmit/jupyterhub:1 . -f goodmit-jupyter.Dockerfile   # 이미지 생성 
+
+docker run -p 8000:8000 -d  --name goodmit-jupyterhub goodmit/jupyterhub:1 jupyterhub  # 실행 
+docker logs goodmit-jupyterhub                                                        # 로그 확인
+docker exec  -it goodmit-jupyterhub /bin/bash                                         # bash 접속
+docker stop  goodmit-jupyterhub  && docker rm goodmit-jupyterhub                      # 정지
+# https://10.10.1.149:8000/                                                           #접속확인
+
+
+
+
+# LDAP 설치
+https://www.itzgeek.com/how-tos/linux/centos-how-tos/step-step-openldap-server-configuration-centos-7-rhel-7.html
+https://confluence.curvc.com/pages/viewpage.action?pageId=6160880
+
+{SSHA}7+Y/w7V0tEcnPhOOlhU6pyBMwy63ORg2
+
+ldppassword

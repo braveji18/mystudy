@@ -1,0 +1,20 @@
+OpenShift v3 설치 시작
+
+# DNS 등록 
+openshift3.test.local
+*.openshift3.test.local
+
+
+# nopassword login 설정 
+ssh-keygen
+ssh-copy-id root@openshift3.test.local
+ssh root@openshift3.test.local
+
+# 
+yum update -y
+yum  install -y git docker net-tools go
+
+
+https://github.com/gshipley/installcentos
+https://github.com/openshift/origin-web-console-server
+

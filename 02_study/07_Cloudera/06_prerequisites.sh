@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NTP_SERVER_IP="192.168.2.11"
+NTP_SERVER_IP="10.10.1.145"
 
 ###############################
 # timezone 변경 
@@ -107,12 +107,12 @@ pssh -i -h /root/allnodes "cat /etc/security/limits.conf | grep -i root "
 # Transparent Hugepage Compaction 비활성화
 ###############################
 
-CHECK_OS="`cat /etc/*-release | uniq | grep NAME`"
-HUGEPAGE_PATH="/sys/kernel/mm/redhat_transparent_hugepage"
-if [[ "$CHECK_OS" = *"CentOS"* ]]; then
-   echo "CENTOS"
+#CHECK_OS="`cat /etc/*-release | uniq | grep NAME`"
+#HUGEPAGE_PATH="/sys/kernel/mm/redhat_transparent_hugepage"
+#if [[ "$CHECK_OS" = *"CentOS"* ]]; then
+#   echo "CENTOS"
    HUGEPAGE_PATH="/sys/kernel/mm/transparent_hugepage"
-fi
+#fi
 
 pssh -h /root/allnodes "echo never > ${HUGEPAGE_PATH}/defrag"
 pssh -h /root/allnodes "echo never > ${HUGEPAGE_PATH}/enabled"

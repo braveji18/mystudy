@@ -15,6 +15,7 @@ if [[ "$PSCP_OUT" = *"pscp.pssh"* ]]; then
    cat ~/.bashrc
 fi
 
+source ~/.bashrc
 
 ###############################
 # 호스트 파일에 IP와 도메인 등록 
@@ -79,6 +80,8 @@ done < /etc/hosts
 cat /root/allnodes
 
 cat /root/nodes_exclude_me
+
+pssh -h /root/allnodes ls 
 
 ###############################
 # /etc/hosts 파일을 모든 노드에 복사

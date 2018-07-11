@@ -9,6 +9,9 @@ vi impala.Dockerfile
 #################################################################
 FROM  docker.repository.cloudera.com/cdsw/engine:5
 
+RUN  add-apt-repository ppa:openjdk-r/ppa  && \
+     apt-get update   && \
+     apt-get install -y openjdk-7-jdk
 
 #https://files.pythonhosted.org/packages/80/93/f0d226061ee4679d5b593c88c7b2e9e077a271c799d29facf31bf03666c1/impyla-0.14.1.tar.gz
 #https://files.pythonhosted.org/packages/aa/ef/2eb38a90ad40d0451a5228e76                                   0505567ff4cd3d8a936341a43a885fa8aa0/bitarray-0.8.2.1.tar.gz
@@ -27,9 +30,6 @@ RUN wget https://cran.r-project.org/src/contrib/Archive/DBI/DBI_0.8.tar.gz
 RUN wget http://cran.rstudio.com/src/contrib/dbplyr_1.2.1.tar.gz
 RUN wget http://cran.rstudio.com/src/contrib/implyr_0.2.4.tar.gz
 
-RUN  add-apt-repository ppa:openjdk-r/ppa  && \
-     apt-get update   && \
-     apt-get install -y openjdk-7-jdk
 
 RUN R CMD javareconf
 RUN R CMD INSTALL rJava_0.9-9.tar.gz
@@ -38,13 +38,21 @@ RUN R CMD INSTALL RJDBC_0.2-7.tar.gz
 RUN R CMD INSTALL dbplyr_1.2.1.tar.gz
 RUN R CMD INSTALL implyr_0.2.4.tar.gz
 
+RUN R -e "install.packages(c('sparklyr'), repos='http://cran.rstudio.com', type='source')"
+
+
 RUN rm -f *.tar.gz
 #################################################################
 
 
-docker build --network host -t goodmit/cdsw-impala:1 . -f impala.Dockerfile
+#docker build --network host -t goodmit/cdsw-impala:1 . -f impala.Dockerfile
 
+docker build --network host -t cdsw-dbs/cdsw:5.1 . -f cdsw-dbs.Dockerfile
 
+docker save cdsw-dbs/cdsw:5.1 | gzip -c > cdsw-dbs-cdsw_51.tar.gz
+
+# sparklyr 테스트 코드 
+https://github.com/cloudera/cdsw-training
 
 # python 테스트 코드
 from impala.dbapi import connect
