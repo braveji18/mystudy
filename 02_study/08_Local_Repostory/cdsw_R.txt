@@ -7,7 +7,7 @@ FROM  docker.repository.cloudera.com/cdsw/engine:5
 
 
 RUN wget https://cran.r-project.org/src/contrib/Archive/xgboost/xgboost_0.71.1.tar.gz
-RUN RCMD INSTALL xgboost_0.71.1.tar.gz
+RUN R CMD INSTALL xgboost_0.71.1.tar.gz
 RUN rm -f *.tar.gz
 #####################################################################
 

@@ -30,6 +30,7 @@ RUN wget https://cran.r-project.org/src/contrib/Archive/DBI/DBI_0.8.tar.gz
 RUN wget http://cran.rstudio.com/src/contrib/dbplyr_1.2.1.tar.gz
 RUN wget http://cran.rstudio.com/src/contrib/implyr_0.2.4.tar.gz
 
+ADD implyr_0.2.4.tar.gz  /src/implyr_0.2.4.tar.gz
 
 RUN R CMD javareconf
 RUN R CMD INSTALL rJava_0.9-9.tar.gz
@@ -50,6 +51,8 @@ RUN rm -f *.tar.gz
 docker build --network host -t cdsw-dbs/cdsw:5.1 . -f cdsw-dbs.Dockerfile
 
 docker save cdsw-dbs/cdsw:5.1 | gzip -c > cdsw-dbs-cdsw_51.tar.gz
+
+docker load --input cdsw-dbs-cdsw_51.tar.gz
 
 # sparklyr 테스트 코드 
 https://github.com/cloudera/cdsw-training
