@@ -17,6 +17,7 @@ mkdir -p /var/www/html/cran
 mkdir -p /var/www/html/conda
 mkdir -p /var/www/html/python-mirror
 mkdir -p /var/www/html/ubuntu-mirror
+mkdir -p /var/www/html/nvida-docker 
 
 ######################################################################
 ## CDH
@@ -135,5 +136,26 @@ vi /etc/bandersnatch.conf
 directory = /var/www/html/python-mirror
 
 nohup /var/www/html/bandersnatch/bin/bandersnatch mirror > python.log   &
+
+
+######################################################################
+## nvidia-docker
+######################################################################
+
+# https://github.com/NVIDIA/nvidia-docker/
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | \
+  sudo tee /etc/yum.repos.d/nvidia-docker.repo
+
+
+nohup  reposync  --download_path=/var/www/html/nvida-docker > nvida-docker.log   &
+
+
+
+
+
+
+
+
 
 

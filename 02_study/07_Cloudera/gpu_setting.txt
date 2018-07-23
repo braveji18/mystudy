@@ -4,3 +4,24 @@
 # https://github.com/PHI-Toolkit/docker-jupyterhub/blob/master/Dockerfile
 docker build --network host -t goodmit/jupyterhub:1 . -f jupyterhub.Dockerfile
 docker run -p 8000:8000 -d --name pydata-jupyterhub goodmit/pydata-jupyterhub jupyterhub
+
+
+# 설치 순서 
+
+1. redhat 로컬 레파지토리 생성
+2. docker 설치
+3. docker-compose와 docker-machine 설치
+4. nvida-docker 설치
+   1) nvida-docker 레포 생성
+   2) yum install nvidia-docker2
+   3) pkill -SIGHUP dockerd
+   4) systemctl start docker && systemctl enable docker
+   5) docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+   6) docker save nvidia/cuda | gzip -c > nvidia_cuda.tar.gz
+   
+5. Docker 이미지 빌드
+   1) docker build -t goodmit/dl-docker:gpu -f Dockerfile.gpu .
+   2) docker save goodmit/dl-docker:gpu | gzip -c > goodmit_dl-docker:gpu.tar.gz
+   
+
+   

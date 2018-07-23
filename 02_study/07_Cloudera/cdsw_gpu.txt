@@ -16,8 +16,9 @@ yum update -y
 reboot
 
 # Set Up the Operating System and Kernel
+# strace64
 yum install -y flex gcc gcc-c++  redhat-rpm-config strace \
-  rpm-build make pkgconfig gettext automake strace64 \
+  rpm-build make pkgconfig gettext automake \
   gdb bison libtool autoconf gcc-c++ gcc-gfortran \
   binutils rcs patchutils wget 
 
