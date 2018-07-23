@@ -106,6 +106,7 @@ vi conf/zeppelin-site.xml
 ```
 # https://zeppelin.apache.org/docs/0.8.0/setup/deployment/cdh.html
 # https://zeppelin.apache.org/docs/latest/interpreter/spark.html
+# https://issues.apache.org/jira/browse/ZEPPELIN-446
 
 cp conf/zeppelin-env.sh.template   conf/zeppelin-env.sh   
 cat <<EOT >>  conf/zeppelin-env.sh
@@ -119,11 +120,21 @@ EOT
 ```
 
 
+# SSO 적용
+
+```
+# https://stackoverflow.com/questions/43192091/how-can-i-enable-sso-login-to-apache-zeppelin-on-aws-emr
+# https://medium.com/data-collective/apache-zeppelin-oauth-integration-using-apache-knox-dea2362e3dda
+```
+
+
+
 # 문제점 정리
 
 - 로그인한 계정ID로 hadoop으로 접속되지 않고 zeppelin으로 실행한 계정ID로 hadoop에 접속
 - Zeppelin을 설치하기 위해서는 cloudera 가 관리되는 서버가 필요 : hive, hdfs , spark gateway 설치 필요
 - 서로 다른 계정으로 접속하여도 작업용 notebook은 동일함.
+- kerberos 인증시 keytab은 하나면 등록되고  keytab에 등록된 계정으로 hadoop에 연동됨.
 
 
 

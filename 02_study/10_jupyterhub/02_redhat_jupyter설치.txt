@@ -7,7 +7,8 @@ yum install wget bzip2 -y
 
 wget https://repo.continuum.io/archive/Anaconda3-5.2.0-Linux-x86_64.sh
 chmod u+x Anaconda3-5.2.0-Linux-x86_64.sh
-./Anaconda3-5.2.0-Linux-x86_64.sh -b -p /opt/anaconda3
+
+
 export PATH=/opt/anaconda3/bin:$PATH
 
 
@@ -21,6 +22,7 @@ curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 # nodejs.x86_64 2:8.11.3-1nodesource
 yum install nodejs -y
 npm install -g configurable-http-proxy
+# /usr/bin/configurable-http-proxy -> /usr/lib/node_modules/configurable-http-proxy/bin/configurable-http-proxy
 
 conda install --yes -c conda-forge jupyterhub  # installs jupyterhub and proxy
 conda install --yes notebook  # needed if running the notebook servers locally

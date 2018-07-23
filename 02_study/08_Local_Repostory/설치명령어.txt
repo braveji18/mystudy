@@ -12,7 +12,7 @@ mkdir -p /var/www/html/cm6
 mkdir -p /var/www/html/cdsw
 mkdir -p /var/www/html/SPARK2
 mkdir -p /var/www/html/centos7.x
-mkdir -p /var/www/html/repel
+mkdir -p /var/www/html/epel
 mkdir -p /var/www/html/cran
 mkdir -p /var/www/html/conda
 mkdir -p /var/www/html/python-mirror
@@ -66,11 +66,12 @@ nohup wget -P /var/www/html/SPARK2 http://archive.cloudera.com/spark2/parcels/2.
 nohup wget -P /var/www/html/SPARK2 http://archive.cloudera.com/spark2/csd/SPARK2_ON_YARN-2.3.0.cloudera2.jar   &
 
 ######################################################################
-## repel
+## epel
 ######################################################################
-nohup  wget -P /var/www/html/repel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ > repel.log   &
+nohup  wget -P /var/www/html/epel -r http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/ > epel.log   &
 OR
-nohup  reposync  --download_path=/var/www/html/repel > repel.log   &
+# yum install yum-utils createrepo
+nohup  reposync  --download_path=/var/www/html/epel > epel.log   &
 
 
 ######################################################################
@@ -90,6 +91,9 @@ done < packages.txt
 
 nohup  sh /var/www/html/conda/download.sh > conda.log 2>&1&
 
+or
+
+nohup  wget -P /root/conda/ -r https://repo.continuum.io/pkgs/main/linux-64/ > conda.log   &
 
 ######################################################################
 ## R 
@@ -98,6 +102,8 @@ nohup  sh /var/www/html/conda/download.sh > conda.log 2>&1&
 nohup rsync --bwlimit=1000  -rtlzv --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
 
 nohup rsync --bwlimit=1000  -rtlzv --exclude 'bin'  --exclude 'contrib' --exclude 'doc'  --delete cran.r-project.org::CRAN /var/www/html/cran > r.log  &
+
+nohup  wget -P /root/cran -r https://cran.r-project.org/src/contrib/ > cran.log   &
 
 
 ######################################################################
