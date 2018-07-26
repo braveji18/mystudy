@@ -119,7 +119,6 @@ EOT
 
 ```
 
-
 # SSO 적용
 
 ```
@@ -128,15 +127,9 @@ EOT
 ```
 
 
-
 # 문제점 정리
-
 - 로그인한 계정ID로 hadoop으로 접속되지 않고 zeppelin으로 실행한 계정ID로 hadoop에 접속
 - Zeppelin을 설치하기 위해서는 cloudera 가 관리되는 서버가 필요 : hive, hdfs , spark gateway 설치 필요
 - 서로 다른 계정으로 접속하여도 작업용 notebook은 동일함.
 - kerberos 인증시 keytab은 하나면 등록되고  keytab에 등록된 계정으로 hadoop에 연동됨.
-
-
-
-
 

@@ -235,7 +235,7 @@ c.JupyterHub.ip = ''
 
 # The PAM service to use for authentication.
 # c.PAMAuthenticator.service = 'login'
-c.JupyterHub.hub_ip = '10.10.1.149'  # 서버IP로 수정
+c.JupyterHub.hub_ip = '10.10.1.148'  # 서버IP로 수정
 
 import os
 import sys
@@ -252,7 +252,6 @@ c.DockerSpawner.image = 'docker.io/jupyter/all-spark-notebook'
 #c.DockerSpawner.tls_cert = os.environ['DOCKER_TLS_CERT']
 #c.DockerSpawner.tls_key = os.environ['DOCKER_TLS_KEY']
 c.DockerSpawner.remove_containers = True
-#c.DockerSpawner.volumes = {os.environ['NBGRADER_EXCHANGE']: os.environ['NBGRADER_EXCHANGE']}
 c.DockerSpawner.extra_host_config = {'mem_limit': '2g'}
 c.DockerSpawner.container_ip = c.JupyterHub.hub_ip
 c.JupyterHub.ssl_cert = '/etc/ssl/certs/server.crt'

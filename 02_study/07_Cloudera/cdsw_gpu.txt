@@ -226,11 +226,10 @@ print('Test accuracy:', score[1])
               
 
 # H2o 설치 및 테스트 
-
-importimport  h2oh2o
- importimport  pandaspandas
- importimport  pprintpprint
- importimport  operatoroperato 
+import  h2o
+import  pandas
+import  pprint
+import  operator
 import matplotlib
 from h2o.estimators.glm import H2OGeneralizedLinearEstimator
 from h2o.estimators.gbm import H2OGradientBoostingEstimator

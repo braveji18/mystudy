@@ -1,4 +1,6 @@
 
+# https://docs.nvidia.com/deeplearning/dgx/bp-docker/index.html
+# https://ngc.nvidia.com
 # https://github.com/floydhub/dl-docker
 # https://github.com/jupyterhub/jupyterhub
 # https://github.com/PHI-Toolkit/docker-jupyterhub/blob/master/Dockerfile
@@ -23,5 +25,58 @@ docker run -p 8000:8000 -d --name pydata-jupyterhub goodmit/pydata-jupyterhub ju
    1) docker build -t goodmit/dl-docker:gpu -f Dockerfile.gpu .
    2) docker save goodmit/dl-docker:gpu | gzip -c > goodmit_dl-docker:gpu.tar.gz
    
+   
+6. ngc에서 docker 이미지 가져오기
+    1) 로그인 
+      docker login nvcr.io
+      Username: $oauthtoken
+      Password: dGl0ajBhcmtkZG5qZG50cHBmNnYzZ2RjczE6ZTZkZjYwNjMtZjNiMy00MGUxLWFjYTktNDA2N2QxNzI2OGEz
+      
+    2) nvidia/tensorflow 이미지 가져오기 
+      docker pull nvcr.io/nvidia/tensorflow:18.07-py3
+    3) nvidia/tensorflow에 jupyter설치
+vi Dockerfile.tensorflow.jupyter
+###############################################################################################
+FROM nvcr.io/nvidia/tensorflow:18.07-py3
+RUN    pip --no-cache-dir install --upgrade ipython && \
+    pip --no-cache-dir install  \
+                Cython \
+                ipykernel \
+                jupyter \
+                path.py \
+                Pillow \
+                pygments \
+                six \
+                sphinx \
+                wheel \
+                zmq \
+                && \
+        python -m ipykernel.kernelspec
+
+
+# Set up notebook config
+COPY jupyter_notebook_config.py /root/.jupyter/
+
+# Jupyter has issues with being run directly: https://github.com/ipython/ipython/issues/7062
+COPY run_jupyter.sh /root/
+
+# Expose Ports for TensorBoard (6006), Ipython (8888)
+EXPOSE 6006 8888
+
+WORKDIR "/root"
+CMD ["/bin/bash"]
+###############################################################################################
+
+docker build -t nvcr.io/tensorflow_18.07-py3:2 -f Dockerfile.tensorflow.jupyter .
+nvidia-docker run -it -p 8888:8888 -p 6006:6006 nvcr.io/tensorflow_18.07-py3:1
+
+nvidia-docker run -it -p 8888:8888 -p 6006:6006 nvcr.io/pytorch_18.07-py3:1
+
+
+
+
+
+
+
 
    

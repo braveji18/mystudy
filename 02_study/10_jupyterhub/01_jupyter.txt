@@ -3,6 +3,8 @@
 # ML Docker의 Base 이미지 생성
 ###################################################
 
+username=testuser01
+
 username=goodmit
 adduser ${username}
 passwd ${username}
