@@ -23,30 +23,7 @@ curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 yum install nodejs -y
 npm install -g configurable-http-proxy
 # /usr/bin/configurable-http-proxy -> /usr/lib/node_modules/configurable-http-proxy/bin/configurable-http-proxy
-
-
-#alembic-0.9.9-py_0            
-#appdirs-1.4.3-py_1            
-#async_generator-1.9-0                 
-#automat-0.7.0-py36_0          
-#configurable-http-proxy-3.1.0-node8_1         
-#constantly-15.1.0-py_0           
-#hyperlink-17.3.1-py_0           
-#incremental-17.5.0-py_0           
-#jupyterhub-0.9.1-py36_0          
-#libgcc-7.2.0-h69d50b8_2
-#mako-1.0.7-py_1            
-#nodejs-8.10.0-0              
-#pamela-0.3.0-py36_0          
-#prometheus_client-0.3.0-py_0            
-#pyasn1-0.4.3-py_0            
-#pyasn1-modules-0.2.1-py_0            
-#pyhamcrest-1.9.0-py_2            
-#python-editor-1.0.3-py36_0          
-#python-oauth2-1.0.1-py36_0          
-#service_identity-17.0.0-py_0           
-#twisted-18.7.0-py36h470a237_0 
-#zope.interface-4.5.0-py36h470a237_0  
+ 
 #certifi-2018.4.16-py36_0
 #conda-4.5.8-py36_1
 conda install --yes -c conda-forge jupyterhub  # installs jupyterhub and proxy
@@ -56,6 +33,7 @@ conda install --yes notebook  # needed if running the notebook servers locally
 #ldap3-2.5-py_1
 conda install -c conda-forge jupyterhub-ldapauthenticator 
 
+pip install dockerspawner
 
 # Set up IPython kernel
 rm -rf /usr/local/share/jupyter/kernels/* && \
@@ -74,6 +52,16 @@ jupyterhub -f jupyterhub_config.py
 
 
 # setlinux disable
+
+
+#!/bin/sh
+searchdir=/root/jupyterhub
+for entry in $searchdir/*tar.bz2
+do
+    echo "$entry"
+    conda install -y $entry
+done
+
 
 #########################################################################
 ## docker 설치
@@ -116,7 +104,24 @@ c.JupyterHub.ssl_key = 'server.key'
 
 
 
+# https://github.com/jupyterhub/dockerspawner
+# dockerspawner 설정 방법
+pip install sudospawner 
+vi jupyterhub_config.py
+```
+c.JupyterHub.hub_ip = ''
 
+c.JupyterHub.authenticator_class = 'ldapauthenticator.LDAPAuthenticator'
+c.LDAPAuthenticator.server_address =  '10.10.1.149:389'
+c.LDAPAuthenticator.bind_dn_template = [
+    "uid={username},ou=People,dc=itzgeek,dc=local",
+    "uid={username},ou=developers,dc=wikimedia,dc=org",
+]
+
+c.JupyterHub.spawner_class='sudospawner.SudoSpawner'
+c.JupyterHub.ssl_cert = 'server.crt'
+c.JupyterHub.ssl_key = 'server.key'
+```
 
 
 
