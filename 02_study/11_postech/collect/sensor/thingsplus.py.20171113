@@ -1,0 +1,288 @@
+#!/usr/bin/python
+#-*- coding: utf-8 -*-
+
+
+import urllib2 , urllib
+import json 
+import pprint
+from cStringIO import StringIO
+import datetime, time
+import platform
+import mysql.connector
+from mysql.connector.errors import Error
+from mysql.connector import errorcode
+import re
+
+
+AUTH_KEY = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI3MyIsImNsaWVudElkIjoiaGFkb29wQ2xpZW50IiwiaWF0IjoxNTA2MzIwOTg1LCJleHAiOjE1MTQwOTY5ODV9.JjNSi_NeF7HUYVLk6pSdN3DUBLirJebC_k1GbRqH-Ac'
+
+DATA_THINGS_URL = 'https://api.sandbox.thingplus.net/v2'
+
+PHASE_LIST = ['N', 'R', 'S', 'T']
+SEQUENCE_LIST = ['I_RMS', 'I_FQ', 'V_RMS', 'V_FQ', 'P', 'S', 'PF', 'Q' ]
+
+SEPARATOR = ','
+
+with open('/home/admin/collect/db_config.json', 'r') as f: 
+    DB_CONFIG = json.loads( f.read() )
+
+def getSensorTypeSiteID( cnx ) : 
+    cursor = cnx.cursor()
+    cursor.execute('select distinct thingsplus_site_id from SENSOR_TYPE WHERE thingsplus_site_id != \'\'  ')
+    siteids = [ ]
+    for (thingsplus_site_id ) in cursor:
+       siteids.append( thingsplus_site_id[0] )
+    cursor.close()
+    return siteids
+
+def getSensorTypeModelInfo( cnx ) :
+    cursor = cnx.cursor()
+    cursor.execute('select measure_item_code, item_order, thingsplus_site_id, thingsplus_model_id, thingsplus_devicemodel_id, thingsplus_sensor_id from SENSOR_TYPE WHERE thingsplus_site_id != \'\'   order by thingsplus_site_id, item_order ')
+    modelInfoDic = {}
+    prev_site_id = ''
+    for (measure_item_code, item_order, site_id, model_id, devicemodel_id, sensor_id ) in cursor:
+        #print (measure_item_code, item_order, site_id, model_id, devicemodel_id, sensor_id )
+        info = { 'measure_item_code': measure_item_code, 
+                 'item_order':item_order, 
+                 'site_id':site_id, 
+                 'model_id':model_id, 
+                 'devicemodel_id':devicemodel_id, 
+                 'sensor_id':sensor_id  }
+        
+        if prev_site_id != site_id :
+            infoList = [ info ]
+            modelInfoDic[ site_id ] = infoList
+        else : 
+            infoList = modelInfoDic[ site_id ]
+            infoList.append( info )
+        
+        prev_site_id = site_id
+       
+    cursor.close()
+    return modelInfoDic
+
+def getNowFormat( dateformat='%Y-%m-%d %H:%M:%S', prevHour=0 ) :
+    today = datetime.datetime.now()
+    if prevHour != 0 : 
+        today = today - datetime.timedelta(hours=prevHour)
+    return today.strftime( dateformat )
+
+
+def getTimeDataFormat( utime, dateformat='%Y-%m-%d %H:%M:%S'  ) :
+    ts = (float) ( utime / 1000 )
+    return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S.%f')
+
+
+## Gateway( => Sensor ) 조회
+def getSensorList( siteids ) : 
+
+    retrive_url = '%s/gateways' % ( DATA_THINGS_URL ) 
+    req = urllib2.Request(retrive_url)
+    req.add_header('Authorization', AUTH_KEY)
+    resp = urllib2.urlopen(req)
+
+    data = json.load(resp)
+    ##pprint.pprint ( data )
+
+    sensorDic = {} 
+    totalCount = data['_meta']['count']
+    for idx in range( totalCount ) :
+        sid = data['data'][idx]['id']
+        sname = data['data'][idx]['name']
+        model = data['data'][idx]['model']
+        if model in siteids : 
+            sensorDic[ sid ] = { 'sensorName': sname, 'model':model }
+            print "allow SENSOR_ID=%s, SENSOR_NAME=%s, MODEL=%s" %( sid, sname, model )
+        #else :
+        #    print "not allow SENSOR_ID=%s, SENSOR_NAME=%s, MODEL=%s" %( sid, sname, model )
+
+    return sensorDic
+    
+def getModelName( deviceId, deviceModels ) :
+    for deviceModel in deviceModels : 
+        if deviceModel['id'] == deviceId : 
+            return deviceModel['model']
+
+## SensorData 조회
+def getSensorDataFromModel(modelInfo, sensorID, startDate, endDate, f) :
+    retrive_url = '%s/gateways/%s?embed=sensors&sensors[embed]=series&sensors[series][dataStart]=%sT00:00:00.000Z&sensors[series][dataEnd]=%sT00:00:00:000Z&sensors[series][interval]=0' \
+                   %( DATA_THINGS_URL,  sensorID, startDate, endDate )
+     
+    print retrive_url
+    req = urllib2.Request(retrive_url)
+    req.add_header('Authorization', AUTH_KEY)
+    resp = urllib2.urlopen(req)
+
+    data = json.load(resp)
+    ##pprint.pprint ( data )
+
+    sname = data['data']['name']
+    sensors = data['data']['sensors']
+    deviceModels = data['data']['deviceModels']
+    
+    totalCount = len( sensors )
+    for idx in range( totalCount ) :
+        deviceId = sensors[idx]['deviceId']
+        modelName = getModelName( deviceId, deviceModels )
+        name = sensors[idx]['name']
+        dataStart = sensors[idx]['series']['_meta']['dataStart']
+        dataEnd = sensors[idx]['series']['_meta']['dataEnd']
+        
+        name = name.replace('/\([^)]+\)/', '')
+        
+        print (deviceId, modelName, name, dataStart, dataEnd )
+
+        
+    
+## SensorData 조회
+def getSensorData(sensorID, startDate, endDate, f ) :
+
+    retrive_url = '%s/gateways/%s?embed=sensors&sensors[embed]=series&sensors[series][dataStart]=%sT00:00:00.000Z&sensors[series][dataEnd]=%sT00:00:00:000Z&sensors[series][interval]=0' \
+                   %( DATA_THINGS_URL,  sensorID, startDate, endDate )
+     
+    print retrive_url
+    req = urllib2.Request(retrive_url)
+    req.add_header('Authorization', AUTH_KEY)
+    resp = urllib2.urlopen(req)
+
+
+    data = json.load(resp)
+    ##pprint.pprint ( data )
+
+    sname = data['data']['name']
+    sensors = data['data']['sensors']
+    #mtime = data['data']['mtime']
+    #print getTimeDataFormat( float(mtime) )
+
+    totalCount = len( sensors )
+
+    phaseDict = {}
+    seriesDict = {}
+    for idx in range( totalCount ) :
+
+        address = sensors[idx]['address']
+        if address in phaseDict:
+            seriesDict = phaseDict[ address ]
+        else : 
+            seriesDict = {}
+
+        sequence = sensors[idx]['sequence']
+        dataStart = sensors[idx]['series']['_meta']['dataStart']
+        dataEnd = sensors[idx]['series']['_meta']['dataEnd']
+
+        ##print "%s %s" %( getTimeDataFormat( dataStart ) , getTimeDataFormat( dataEnd )  )
+        ##print "%s, %s, %s" % ( sname , address, sequence )
+
+        series = sensors[idx]['series']['data']
+        series_cnt  = len( series )
+        sIdx = 0
+        dataDic = {}
+        while( sIdx < series_cnt ) :
+            val = sensors[idx]['series']['data'][sIdx]
+            sIdx = 1 + sIdx
+            utime = sensors[idx]['series']['data'][sIdx] 
+            utimeStr = getTimeDataFormat( utime )
+            sIdx = 1 + sIdx
+            dataDic[ utimeStr ] = val
+            ##print "%s, %s" % ( utimeStr , val) 
+
+        seriesDict[ sequence ] = dataDic
+        phaseDict[ address ] = seriesDict
+
+
+    for phase in PHASE_LIST :
+        seriesDict = phaseDict[ phase ]
+
+        iRms = SEQUENCE_LIST[0]
+        iRmsDict = seriesDict[ iRms ]
+        ##print iRmsDict    
+        timeKeys = iRmsDict.keys()
+        timeKeys.sort()
+
+        line = StringIO()
+        for hhmmss in timeKeys :
+            line.write( hhmmss )
+            line.write( SEPARATOR  )  
+            line.write( sname )
+            line.write( SEPARATOR  )  
+            line.write( phase )
+            line.write( SEPARATOR  )          
+            for seqname in SEQUENCE_LIST :
+
+                if hhmmss in seriesDict[ seqname ]:
+                    val = seriesDict[ seqname ][ hhmmss ]
+                else : 
+                    val = ''
+                    
+                if str( val ) == 'nan' : 
+                    val = ''
+
+                line.write( val )
+                line.write( SEPARATOR )
+                
+            line.write( '\n' )
+        ##print  line.getvalue()
+        f.write( line.getvalue() )
+        line.close() 
+    
+    f.flush()
+
+
+
+def main():
+    WORK_DIR = '/home/admin/collect/sensor'
+    startDate = getNowFormat( '%Y-%m-%d', prevHour=24 )
+    endDate = getNowFormat( '%Y-%m-%d' )
+
+    try:
+        cnx = mysql.connector.connect(**DB_CONFIG)
+        siteids = getSensorTypeSiteID( cnx  )
+        sensorDic = getSensorList( siteids ) 
+
+        modelInfoDic = getSensorTypeModelInfo(cnx)
+        #print modelInfoDic
+
+        for sensorID in sensorDic.keys() :
+            sensorName = sensorDic[ sensorID ]['sensorName']
+            modelID = sensorDic[ sensorID ]['model']
+            modelInfo = modelInfoDic[ modelID ] 
+            print (sensorName, modelID )
+            #fileSensorData = '%s/data/%s_%s.csv' % (WORK_DIR, sensorName ,  getNowFormat( '%Y%m%d%H' ) )
+            #with open(fileSensorData, 'w') as f:
+            #    getSensorDataFromModel(modelInfo, sensorID, startDate, endDate, f )
+
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print("ERROR=" + str(err) )
+    else:
+        cnx.close()    
+
+#    
+#    sensorDic = getSensorList() 
+#    for sensorID in sensorDic.keys() : 
+#        
+#        if sensorID == 'encored_e3d7833e' : 
+#            continue
+#        
+#        #sensorID = 'b0d5ccf52ab4'    
+#        sensorName = sensorDic[ sensorID ]
+#        if platform.system() == 'Windows' :
+#            sensorName = sensorName.replace(":", ";")
+#        
+#        fileSensorData = '%s/data/%s_%s.csv' % (WORK_DIR, sensorName ,  getNowFormat( '%Y%m%d%H' ) )            
+#        with open(fileSensorData, 'w') as f:
+#            getSensorData( sensorID, startDate, endDate, f )
+
+
+if __name__ == "__main__":
+    import time
+    t1 = time.time() # start time
+    main()
+    t2 = time.time() # end time
+    print ("sensorData.py, Run Time: %d sec" %(t2-t1) )
+
+

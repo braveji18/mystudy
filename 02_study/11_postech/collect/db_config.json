@@ -1,0 +1,7 @@
+{
+  "user": "energy",
+  "password": "vhtmxpr1!",
+  "host": "mgmt001.data.postech",
+  "database": "energy",
+  "raise_on_warnings": true
+}
