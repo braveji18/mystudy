@@ -21,6 +21,13 @@ pssh -h /root/allnodes "service iptables stop; chkconfig iptables off; service i
 stop; chkconfig ip6tables off"
 pssh -h /root/allnodes "systemctl stop firewalld ; systemctl disable firewalld"
 
+
+###############################
+# Disable unneeded services
+###############################
+pssh -h /root/allnodes "service cups stop && chkconfig cups off "
+pssh -h /root/allnodes "service postfix stop && chkconfig postfix off"
+
 ###############################
 # NTP 설정
 ###############################
@@ -86,7 +93,8 @@ do
 done < /etc/hosts
 
 pssh -h /root/allnodes "yum install -y ntpdate"
-pssh -i -h /root/allnodes "ntpdate ${NTP_SERVER_IP}"
+pssh -i -h /root/allnodes "ntpdate ${NTP_SERVER_IP}" # Synchronize the node.
+pssh -i -h /root/allnodes "hwclock --systohc"  # Synchronize the system clock
 pssh -h /root/allnodes "service ntpd start"
 pssh -h /root/allnodes "chkconfig ntpd on"
 pssh -i -h /root/allnodes "ntpq -pn"
