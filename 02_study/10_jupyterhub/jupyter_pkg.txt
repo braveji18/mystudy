@@ -1,0 +1,112 @@
+wget https://files.pythonhosted.org/packages/f7/62/2fef7db3a7b75e8099c3d9db2630ae5ba0b9eefefd91f7497862393d90e8/ipython-6.5.0-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/3d/68/8bbf0ef969095a13ba0d4c77c1945bd86e9811960d052510551d29a2f23b/jedi-0.12.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/02/ee/b6e02dc6529e82b75bb06823ff7d005b141037cb1416b10c6f00fc419dca/Pygments-2.2.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/bc/bb/a24838832ba35baf52f32ab1a49b906b5f82fb7c76b2f6a7e35e140bac30/decorator-4.3.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/9f/17/daa142fc9be6b76f26f24eeeb9a138940671490b91cb5587393f297c8317/pickleshare-0.7.4-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/84/71/c8ca4f5bb1e08401b916c68003acf0a0655df935d74d93bf3f3364b310e0/backcall-0.1.0.tar.gz
+wget https://files.pythonhosted.org/packages/93/d6/abcb22de61d78e2fc3959c964628a5771e47e7cc60d53e9342e21ed6cc9a/traitlets-4.3.2-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/04/d1/c6616dd03701e7e2073f06d5c3b41b012256e42b72561f16a7bd86dd7b43/prompt_toolkit-1.0.15-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/3d/57/4d9c9e3ae9a255cd4e1106bb57e24056d3d0709fc01b2e3e345898e49d5b/simplegeneric-0.8.1.zip
+wget https://files.pythonhosted.org/packages/09/51/9c48a46334be50c13d25a3afe55fa05c445699304c5ad32619de953a2305/parso-0.3.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/fa/bc/9bd3b5c2b4774d5f33b2d544f1460be9df7df2fe42f352135381c347c69a/ipython_genutils-0.2.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/7e/9f/526a6947247599b084ee5232e4f9190a38f398d7300d866af3ab571a5bfe/wcwidth-0.1.7-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/99/f9/1c93f3ef9189e53c8647b55ea60ad5f6fd4cdcb0217fc97e87e299d8528d/Cython-0.28.5-cp35-cp35m-manylinux1_x86_64.whl
+wget https://files.pythonhosted.org/packages/ab/3f/cd624c835aa3336a9110d0a99e15070f343b881b7d651ab1375ef226a3ac/ipykernel-4.8.2-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/83/df/0f5dd132200728a86190397e1ea87cd76244e42d39ec5e88efd25b2abd7e/jupyter-1.0.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/d4/43/51cff8da2b46cb8ed7fec98c35047383560c39caf0d9b3f1f32b4eedd527/path.py-11.0.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/3d/9e/b8a10bec874d2f6f2668b0d71ddf0d0a69ed9307d2ef111607adf81fdc1c/Pillow-5.2.0-cp35-cp35m-manylinux1_x86_64.whl
+wget https://files.pythonhosted.org/packages/6d/62/e95cbd4966acaecb8805c321609ba986e47d806e5735967acfe2db3f7c26/Sphinx-1.7.6-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/6e/78/833b2808793c1619835edb1a4e17a023d5d625f4f97ff25ffff986d1f472/zmq-0.0.0.tar.gz
+wget https://files.pythonhosted.org/packages/94/dd/fe6c4d683b09eb05342bd2816b7779663f71762b4fa9c2d5203d35d17354/jupyter_client-5.2.3-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/45/ec/f2a03a0509bcfca336bef23a3dab0d07504893af34fd13064059ba4a0503/tornado-5.1.tar.gz
+wget https://files.pythonhosted.org/packages/1e/a3/92355f7fe0082b17a9488665fb0af99fb16c7767296b3a395652abf13a70/qtconsole-4.4.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/39/ea/280d6c0d92f8e3ca15fd798bbcc2ea141489f9539de7133d8fe10ea4b049/nbconvert-5.3.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/34/3a/5b258ea6d584f5a8527c2295d0ebf7ffb1654e3de38d37697f88bbef6621/ipywidgets-7.4.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/5e/7c/7fd8e9584779d65dfcad9fa2e09c76131a41f999f853a9c7026ed8585586/notebook-5.6.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/77/82/6469cd7fccf7958cbe5dce2e623f1e3c5e27f1bb1ad36d90519bc2d5d370/jupyter_console-5.2.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/b8/ad/c6f60602d3ee3d92fbed87675b6fb6a6f9a38c223343ababdb44ba201f10/Babel-2.6.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/6e/71/c3648cc2f675063dbe2d669004a59e4a5120172713a1de3c3b14144d4b31/alabaster-0.7.11-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/52/69/3c2fbdc3702358c5b34ee25e387b24838597ef099761fc9a42c166796e8f/sphinxcontrib_websupport-1.1.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/65/47/7e02164a2a3db50ed6d8a6ab1d6d60b69c4c3fdf57a284257925dfc12bda/requests-2.19.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/36/fa/08e9e6e0e3cbd1d362c3bbee8d01d0aedb2155c4ac112b19ef3cae8eed8d/docutils-0.14-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/ad/c2/b500ea05d5f9f361a562f089fc91f77ed3b4783e13a08a3daf82069b1224/packaging-17.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/e9/79/31cc1c2e0daf575f8fd2b581e2975e6a6938bd439581f766b79c50479521/imagesize-1.0.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/d4/6c/8a935e2c7b54a37714656d753e4187ee0631988184ed50c0cf6476858566/snowballstemmer-1.2.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/9a/f9/6d7d3d1c83159997e2e7bc74d11e84a83aa1e7f85e6f028341414e7c2141/pyzmq-17.1.2-cp35-cp35m-manylinux1_x86_64.whl
+wget https://files.pythonhosted.org/packages/1d/44/065d2d7bae7bebc06f1dd70d23c36da8c50c0f08b4236716743d706762a8/jupyter_core-4.4.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/c8/8c/87f4d359438ba0321a2ae91936030110bfcc62fef752656321a72b8c1af9/mistune-0.8.3-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/cc/8b/4eefa9b47f1910b3d2081da67726b066e379b04ca897acfe9f92bac56147/entrypoints-0.2.3-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/da/27/9a654d2b6cc1eaa517d1c5a4405166c7f6d72f04f6e7eea41855fe808a46/nbformat-4.4.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/15/19/d7bc380c479a184e4a5a9ce516e4e2a773165f89b445f7cdced83d94de25/testpath-0.3.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/4c/ea/236e2584af67bb6df960832731a6e5325fd4441de001767da328c33368ce/pandocfilters-1.4.2.tar.gz
+wget https://files.pythonhosted.org/packages/83/03/ed063ec3ecf499d5491734822d8cadfc80f531a41ae1604277b25fbed795/widgetsnbextension-3.4.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/49/46/c3dc27481d1cc57b9385aff41c474ceb7714f7935b1247194adae45db714/Send2Trash-1.5.0-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/a1/b1/08de091b392fec31da9bd3f5edd9214ec1c6931dd81641610ac20f3ff934/prometheus_client-0.3.1.tar.gz
+wget https://files.pythonhosted.org/packages/2e/20/a26211a24425923d46e1213b376a6ee60dc30bcdf1b0c345e2c3769deb1c/terminado-0.8.1-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/4d/de/32d741db316d8fdb7680822dd37001ef7a448255de9699ab4bfcbdf4172b/MarkupSafe-1.0.tar.gz
+wget https://files.pythonhosted.org/packages/bd/c9/6fdd990019071a4a32a5e7cb78a1d92c53851ef4f56f62a3486e6a7d8ffb/urllib3-1.23-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/16/1f/50d729c104b21c1042aa51560da6141d1cab476ba7015d92b2111c8db841/certifi-2018.8.13-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/6a/8a/718fd7d3458f9fab8e67186b00abdd345b639976bc7fb3ae722e1b026a50/pyparsing-2.2.0-py2.py3-none-any.whl
+wget https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
+
+  
+  
+  
+         /root/alabaster-0.7.11-py2.py3-none-any.whl                  \
+         /root/Babel-2.6.0-py2.py3-none-any.whl                       \
+         /root/backcall-0.1.0.tar.gz                                  \
+         /root/certifi-2018.8.13-py2.py3-none-any.whl                 \
+         /root/chardet-3.0.4-py2.py3-none-any.whl                     \
+         /root/Cython-0.28.5-cp35-cp35m-manylinux1_x86_64.whl         \
+         /root/decorator-4.3.0-py2.py3-none-any.whl                   \
+         /root/docutils-0.14-py3-none-any.whl                         \
+         /root/entrypoints-0.2.3-py2.py3-none-any.whl                 \
+         /root/idna-2.7-py2.py3-none-any.whl                          \
+         /root/imagesize-1.0.0-py2.py3-none-any.whl                   \
+         /root/ipykernel-4.8.2-py3-none-any.whl                       \
+         /root/ipython-6.5.0-py3-none-any.whl                         \
+         /root/ipython_genutils-0.2.0-py2.py3-none-any.whl            \
+         /root/ipywidgets-7.4.0-py2.py3-none-any.whl                  \
+         /root/jedi-0.12.1-py2.py3-none-any.whl                       \
+         /root/Jinja2-2.10-py2.py3-none-any.whl                       \
+         /root/jsonschema-2.6.0-py2.py3-none-any.whl                  \
+         /root/jupyter-1.0.0-py2.py3-none-any.whl                     \
+         /root/jupyter_client-5.2.3-py2.py3-none-any.whl              \
+         /root/jupyter_console-5.2.0-py2.py3-none-any.whl             \
+         /root/jupyter_core-4.4.0-py2.py3-none-any.whl                \
+         /root/jupyter_notebook_config.py                             \
+         /root/MarkupSafe-1.0.tar.gz                                  \
+         /root/mistune-0.8.3-py2.py3-none-any.whl                     \
+         /root/nbconvert-5.3.1-py2.py3-none-any.whl                   \
+         /root/nbformat-4.4.0-py2.py3-none-any.whl                    \
+         /root/notebook-5.6.0-py2.py3-none-any.whl                    \
+         /root/packaging-17.1-py2.py3-none-any.whl                    \
+         /root/pandocfilters-1.4.2.tar.gz                             \
+         /root/parso-0.3.1-py2.py3-none-any.whl                       \
+         /root/path.py-11.0.1-py2.py3-none-any.whl                    \
+         /root/pickleshare-0.7.4-py2.py3-none-any.whl                 \
+         /root/Pillow-5.2.0-cp35-cp35m-manylinux1_x86_64.whl          \
+         /root/prometheus_client-0.3.1.tar.gz                         \
+         /root/prompt_toolkit-1.0.15-py3-none-any.whl                 \
+         /root/Pygments-2.2.0-py2.py3-none-any.whl                    \
+         /root/pyparsing-2.2.0-py2.py3-none-any.whl                   \
+         /root/pyzmq-17.1.2-cp35-cp35m-manylinux1_x86_64.whl          \
+         /root/qtconsole-4.4.0-py2.py3-none-any.whl                   \
+         /root/requests-2.19.1-py2.py3-none-any.whl                   \
+         /root/Send2Trash-1.5.0-py3-none-any.whl                      \
+         /root/simplegeneric-0.8.1.zip                                \
+         /root/snowballstemmer-1.2.1-py2.py3-none-any.whl             \
+         /root/Sphinx-1.7.6-py2.py3-none-any.whl                      \
+         /root/sphinxcontrib_websupport-1.1.0-py2.py3-none-any.whl    \
+         /root/terminado-0.8.1-py2.py3-none-any.whl                   \
+         /root/testpath-0.3.1-py2.py3-none-any.whl                    \
+         /root/tornado-5.1.tar.gz                                     \
+         /root/traitlets-4.3.2-py2.py3-none-any.whl                   \
+         /root/urllib3-1.23-py2.py3-none-any.whl                      \
+         /root/wcwidth-0.1.7-py2.py3-none-any.whl                     \
+         /root/widgetsnbextension-3.4.0-py2.py3-none-any.whl          \
+         /root/zmq-0.0.0.tar.gz                                       \
+
