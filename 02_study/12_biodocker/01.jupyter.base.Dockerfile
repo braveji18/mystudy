@@ -1,6 +1,7 @@
 FROM  centos:7.4.1708
 
-RUN yum install -y wget bzip2   &&  \
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+    yum repolist all  &&  yum install -y wget bzip2 libSM   &&  \
     wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
@@ -13,19 +14,23 @@ RUN yum install -y wget bzip2   &&  \
 
 RUN source ~/.bashrc  &&  \
     conda install --quiet --yes \
-           r-essentials=3.5.0 r-rjava r-rjdbc r-odbc  &&   \
-    R -e "install.packages(c('devtools', 'Rcpp'), repos='http://cran.rstudio.com/')"   && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('BiocParallel')"  && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('Biobase')"  && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('EBSeq')"   && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('monocle')" && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('sincell')" && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scde')"    && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scran')"   && \
-    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scater')"
+           r-essentials=3.5.0  
+
+RUN source ~/.bashrc && \
+    R -e "install.packages(c('rzmq','repr','IRkernel','IRdisplay'), repos = c('http://irkernel.github.io/', getOption('repos'))) ; IRkernel::installspec() "
 
 
-VOLUME /notebook
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('BiocParallel')"  && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('Biobase')"  && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('EBSeq')"   && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('monocle')" && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('sincell')" && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scde')"    && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scran')"   && \
+#    R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scater')"
+
+
+RUN  mkdir /notebook
 WORKDIR /notebook
 EXPOSE 8888
 

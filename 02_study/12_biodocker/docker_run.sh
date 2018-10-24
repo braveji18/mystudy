@@ -24,7 +24,7 @@ docker stop jupyter_${USER_ID} && docker rm jupyter_${USER_ID}
 docker run -d  -p ${PORT}:8888 --name jupyter_${USER_ID} \
      -e "PASSWORD=${PASSWORD}"   \
      -v  ${USER_ID}:/notebook/   \
-     macrogen/jupyter.base:01   /bin/bash 
+     macrogen/jupyter.base:01   
 
 
 echo "http://server_ip:${PORT}"
