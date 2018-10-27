@@ -28,7 +28,7 @@
    - jupyter.base기반으로 일반적인 데이터 분석용 도커 이미지를 만들어도 됨.
    
 
-### 설치 순서
+### 빌드  순서
 
 1. Docker  jupyter.base Image 생성하기 
 ```
@@ -45,13 +45,23 @@
 ./03.make.sh
 ```
 
-4. Docker Container을 띄우기
+4. 한번에 모드 빌드 하기
+```
+# 아래 명령어 치고 퇴근
+nohup   ./01.make.sh &&  ./02.make.sh &&  ./03.make.sh  &
+
+# 다음날 아침에 확인 하기 
+tail -f nohup.out
+```
+
+
+###  Docker Container을 띄우기
 ```
 # docker_run.sh  사번또는계정명     jupyter에접속할비밀번호    포트번호    도커명
 ./docker_run.sh  ID0001    biospin1!   8081   {base|bio|ml}
 ```
 
-5. Docker image을 다른 서버에 전달 방법
+### Docker image을 다른 서버에 전달 방법
 ```  
 docker save macrogen/jupyter.base:01 | \
 gzip -c >   macrogen_jupyter.base:01.tar.gz
