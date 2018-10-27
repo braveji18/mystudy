@@ -45,13 +45,33 @@
 ./03.make.sh
 ```
 
-4 Docker Container을 띄우기
+4. Docker Container을 띄우기
 ```
 # docker_run.sh  사번또는계정명     jupyter에접속할비밀번호    포트번호    도커명
 ./docker_run.sh  ID0001    biospin1!   8081   {base|bio|ml}
 ```
 
+5. Docker image을 다른 서버에 전달 방법
+```  
+docker save macrogen/jupyter.base:01 | \
+gzip -c >   macrogen_jupyter.base:01.tar.gz
 
+docker save macrogen/jupyter.bio:01 | \
+gzip -c >   macrogen_jupyter.bio:01.tar.gz
+
+docker save macrogen/jupyter.ml:01 | \
+gzip -c >   macrogen_jupyter.ml:01.tar.gz
+
+# 다른 서버에 전달
+scp  *.tar.gz    ip:/download_dir/
+
+# 다른 서버에 SSH 접속
+ssh ip
+docker image load --input macrogen_jupyter.base:01.tar.gz
+docker image load --input macrogen_jupyter.bio:01.tar.gz
+docker image load --input macrogen_jupyter.ml:01.tar.gz
+
+``` 
 
 
 
