@@ -108,6 +108,12 @@ RUN source ~/.bashrc && \
     R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scran')"   && \
     R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scater')"
 
+RUN source ~/.bashrc && \
+    conda activate r34  && \
+    wget https://conda.anaconda.org/conda-forge/linux-64/r-cghflasso-0.2_1-r3.3.2_0.tar.bz2 && \
+    conda install  r-cghflasso-0.2_1-r3.3.2_0.tar.bz2  && \
+    rm -f r-cghflasso-0.2_1-r3.3.2_0.tar.bz2
+
 
 RUN  mkdir -p /notebook
 WORKDIR /notebook

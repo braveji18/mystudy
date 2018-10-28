@@ -1,3 +1,3 @@
 
 
-docker build -t  macrogen/jupyter.ml:01   .  -f   02.jupyter.ml.Dockerfile
+docker build -t  macrogen/jupyter.ml:01   .  -f   03.jupyter.ml.Dockerfile

@@ -1,4 +1,4 @@
-FROM  macrogen/jupyter.base:01
+FROM  macrogen/jupyter.bio:01
 
 RUN source ~/.bashrc  &&    \
     conda activate base  && \
@@ -21,10 +21,11 @@ RUN source ~/.bashrc &&       \
  
 RUN source ~/.bashrc && \
     conda activate r34  && \
-    R -e "install.packages( c('ggplot2' ) ) "  && \
+    conda install r-ggplot2  && \
+    R -e "install.packages( c('readr' ), repo='https://cran.r-project.org/' ) "  
 
 
-RUN  mkdir /notebook
+RUN  mkdir -p /notebook
 WORKDIR /notebook
 EXPOSE 8888
 
