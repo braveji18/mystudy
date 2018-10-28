@@ -48,8 +48,8 @@ RUN source ~/.bashrc && \
 
 RUN source ~/.bashrc      &&  \
     wget https://conda.anaconda.org/bioconda/linux-64/cnvkit-0.9.3-py27_2.tar.bz2  && \
-    conda install cnvkit-0.9.3-py27_2.tar.bz2    \
-                  mosdepth    \
+    conda install cnvkit-0.9.3-py27_2.tar.bz2 &&   \
+    conda install mosdepth    \
                   openpyxl && \
     rm -f cnvkit-0.9.3-py27_2.tar.bz2   
     
@@ -73,12 +73,12 @@ RUN source ~/.bashrc   && \
 RUN cd $PROGRAM_DIR    && \
     source ~/.bashrc   && \
     wget http://sf.net/projects/fusioncatcher/files/bootstrap.py -O bootstrap.v1.00.py && \
-    python bootstrap.v1.00.py -t –download  && \
+    python bootstrap.v1.00.py -y  -t –download  && \
     conda install -y -c bioconda cutadapt   && \
     rm -f bootstrap.v1.00.py 
 
 # 위치 확인 필요 
-RUN cd $PROGRAM_DIR    && \
+RUN cd /opt/    && \
     chmod 655 fusioncatcher/bin/*.py   
 
 # pyhon 3     
@@ -109,7 +109,7 @@ RUN source ~/.bashrc && \
     R -e "source('http://bioconductor.org/biocLite.R'); biocLite('scater')"
 
 
-RUN  mkdir /notebook
+RUN  mkdir -p /notebook
 WORKDIR /notebook
 EXPOSE 8888
 

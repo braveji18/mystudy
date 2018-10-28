@@ -28,7 +28,9 @@ docker volume inspect  ${USER_ID}
 docker stop jupyter_${USER_ID} && docker rm jupyter_${USER_ID}
 
 if [ "$DOCKER_NAME" = "" ]; then
+   #DOCKER_NAME=base
    DOCKER_NAME=bio
+   #DOCKER_NAME=ml
 fi
 
 docker run -d  -p ${PORT}:8888 --name jupyter_${USER_ID} \
