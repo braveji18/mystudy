@@ -107,7 +107,7 @@ nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/parcel
 nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/parcels/manifest.json &
 nohup wget -P /var/www/html/cdsw https://archive.cloudera.com/cdsw1/1.4.0/csd/CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH5-1.4.0.jar &
 
-cp  /var/www/html/cdsw/CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH5-1.4.0.jar   /opt/cloudera/csd
+cp  /var/www/html/cdsw/*.jar   /opt/cloudera/csd
 chown cloudera-scm:cloudera-scm  /opt/cloudera/csd/*.jar
 chmod 644                        /opt/cloudera/csd/*.jar
  
