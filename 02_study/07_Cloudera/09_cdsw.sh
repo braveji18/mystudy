@@ -8,15 +8,23 @@ yum install -y bind.x86_64
 vi /etc/named.conf
 options {
         listen-on port 53 { any; };
-        listen-on-v6 port 53 { ::any; };
         allow-query     { any; };
+        recursion yes;
 
 vi /etc/named.rfc1912.zones
+# 역방향
 zone "goodmit.co.kr" IN {
     type master;
     file "goodmit.co.kr.zone";
     allow-update { none; };
 };
+# 역방향
+zone "1.10.10.in-addr.arpa" IN { 
+        type master; 
+        file "goodmit.co.kr.rev"; 
+        allow-update { none; }; 
+};
+
 
 cp /var/named/named.empty   /var/named/goodmit.co.kr.zone
 vi /var/named/goodmit.co.kr.zone
@@ -28,30 +36,47 @@ $TTL 3H
                                         1H      ; retry
                                         1W      ; expire
                                         3H )    ; minimum
-       IN NS ns.goodmit.co.kr.
-       IN A  10.10.1.145
+        IN      NS      ns.goodmit.co.kr.
+        IN      A       10.10.1.145
+ns      IN      A       10.10.1.145
 
-ns                   IN A  10.10.1.145
-big01.goodmit.co.kr  IN A  10.10.1.145
-big02.goodmit.co.kr  IN A  10.10.1.146
-big03.goodmit.co.kr  IN A  10.10.1.147
-cdsw.goodmit.co.kr   IN A  10.10.1.148
-*.cdsw.goodmit.co.kr IN A  10.10.1.148
+big01   IN      A       10.10.1.145
+big02   IN      A       10.10.1.146
+big03   IN      A       10.10.1.147
+cdsw    IN      A       10.10.1.148
+*.cdsw  IN      A       10.10.1.148
 
 
-chown root:named /var/named/goodmit.co.kr.zone
-chmod 660        /var/named/goodmit.co.kr.zone  
+cp /var/named/named.empty   /var/named/goodmit.co.kr.rev
+vi /var/named/goodmit.co.kr.rev
+$TTL 3H
+@       IN      SOA     ns.goodmit.co.kr.  root.goodmit.co.kr. (
+                                        20190101       ; serial
+                                        10800   ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+         IN      NS      ns.goodmit.co.kr.
+145      IN      PTR     ns.goodmit.co.kr.
+
+145      IN      PTR     big01.goodmit.co.kr.
+146      IN      PTR     big02.goodmit.co.kr.
+147      IN      PTR     big03.goodmit.co.kr.
+
+
+
+chown root:named /var/named/goodmit.co.kr.*
+chmod 660        /var/named/goodmit.co.kr.*
+
+# 설정 확인
+named-checkconf -z /etc/named.conf
+named-checkconf /etc/named.rfc1912.zones 
+
+named-checkzone goodmit.co.kr /var/named/goodmit.co.kr.zone
 
 # bind 재시작
 systemctl enable named 
 systemctl restart named 
-
-# 설정 확인
-named-checkconf /etc/named.rfc1912.zones 
-named-checkconf /etc/named.conf
-
-
-named-checkzone goodmit.co.kr /var/named/goodmit.co.kr.zone
 
 # bind 서버 등록
 vi  /etc/resolv.conf
