@@ -21,7 +21,11 @@ mkdir -p /home/data01
 #mount -t ext4 -o noatime ${DISK_DEV}1 /home/data01
 mount -t xfs  ${DISK_DEV}1 /home/data01
 
+UUID=`ls -l /dev/disk/by-uuid | grep sdc1 | cut -d" "  -f9`
+
 #echo "${DISK_DEV}1   /home/data01    ext4    defaults,noatime     0 0"   >> /etc/fstab
-echo "${DISK_DEV}1   /home/data01    xfs     defaults,noatime     0 0"   >> /etc/fstab
+echo "UUID=${UUID=}   /home/data01    xfs     defaults,noatime     0 0"   >> /etc/fstab
 
 cat /etc/fstab 
+
+
