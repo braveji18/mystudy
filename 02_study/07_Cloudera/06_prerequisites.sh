@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NTP_SERVER_IP="10.10.1.145"
+NTP_SERVER_IP="100.3.1.51"
 
 ###############################
 # timezone 변경 
@@ -17,8 +17,7 @@ pssh -h /root/allnodes "setenforce 0"
 ###############################
 # Linux Firewall 비활성화
 ###############################
-pssh -h /root/allnodes "service iptables stop; chkconfig iptables off; service ip6tables
-stop; chkconfig ip6tables off"
+pssh -h /root/allnodes "service iptables stop; chkconfig iptables off; service ip6tables stop; chkconfig ip6tables off"
 pssh -h /root/allnodes "systemctl stop firewalld ; systemctl disable firewalld"
 
 
@@ -43,7 +42,7 @@ server 127.127.1.0
 fudge 127.127.1.0 stratum 10
 EOT
 
-echo "server ${NTP_SERVER_IP}    # NTP 서버"  >>  /root/ntp.conf
+echo "server ${NTP_SERVER_IP} iburst   # NTP 서버"  >>  /root/ntp.conf
 
 # NTP 서버일 경우 
 while read IP FQDN DOMAIN
