@@ -11,12 +11,11 @@ RUN mkdir -p /opt/conda/envs/python3.6
 RUN conda install -y nbconvert python=3.6.1 -n python3.6 && \
     conda install -y -n python3.6 pymysql scikit-learn \
         bokeh=1.4.0 \
-        matplotlib \
+        matplotlib=2.0.2 \
         gensim \
         glob2 \
         h5py \
         joblib \
-        matplotlib \
         mpi4py \
         multiprocess \
         nltk \
@@ -26,6 +25,18 @@ RUN conda install -y nbconvert python=3.6.1 -n python3.6 && \
         scipy \
         statsmodels \
         statsd \
-        tqdm
-     
-RUN /opt/conda/envs/python3.6/bin/pip install gputil gym 
+        tqdm \
+        seaborn
+
+RUN /opt/conda/envs/python3.6/bin/pip install gputil gym  jupyterlab
+
+RUN cd /tmp/ && \
+    wget https://jaist.dl.sourceforge.net/project/libpng/zlib/1.2.9/zlib-1.2.9.tar.gz  && \
+    tar -xvf zlib-1.2.9.tar.gz && \
+    cd zlib-1.2.9   && \
+    ./configure &&  make && make install && \
+    cd /usr/lib/x86_64-linux-gnu/  && \
+    ln -s -f /usr/local/lib/libz.so.1.2.9/lib libz.so.1 && \
+    cd /tmp/ && rm -rf zlib-1.2.9
+    
+    
