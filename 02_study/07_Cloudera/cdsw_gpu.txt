@@ -33,7 +33,10 @@ wget http://us.download.nvidia.com/XFree86/Linux-x86_64/390.67/NVIDIA-Linux-x86_
 chmod 755 ./NVIDIA-Linux-x86_64-$NVIDIA_DRIVER_VERSION.run
 ./NVIDIA-Linux-x86_64-$NVIDIA_DRIVER_VERSION.run -asq
 
+/usr/bin/nvidia-smi -pm 1 
+
 /usr/bin/nvidia-smi
+
 
 
 # Enable Docker NVIDIA Volumes on GPU Nodes
