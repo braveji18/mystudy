@@ -9,7 +9,7 @@ if [ "$SITE_DOMAIN"  == "" ]; then
 
 fi
 
-docker save  rstudio.docker.repository.cloudera.com/cdsw/engine:10  | gzip > rstudio.docker.repository.cloudera.com.tar.gz 
+docker save  rstudio.docker.repository.cloudera.com/cdsw/engine:8  | gzip > rstudio.docker.repository.cloudera.com.tar.gz 
 
-docker save  rstudio.${SITE_DOMAIN}/cdsw/engine:10  | gzip > rstudio.${SITE_DOMAIN}.tar.gz 
+docker save  rstudio.${SITE_DOMAIN}/cdsw/engine:8  | gzip > rstudio.${SITE_DOMAIN}.tar.gz 
 

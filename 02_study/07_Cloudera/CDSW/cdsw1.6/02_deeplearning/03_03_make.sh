@@ -11,5 +11,5 @@ if [ "$SITE_DOMAIN"  == "" ]; then
 fi
 
 
-docker build --network=host -t pytorch1.3.${SITE_DOMAIN}/cdsw/engine:10 . -f  03.03.pytorch1.3.Dockerfile
+docker build --network=host -t pytorch1.3.${SITE_DOMAIN}/cdsw/engine:8 . -f  03.03.pytorch1.3.Dockerfile
 
