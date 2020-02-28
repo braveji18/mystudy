@@ -19,7 +19,8 @@ LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 
 ENV CUDA_PKG_VERSION 9-0_$CUDA_VERSION-1
 RUN apt-get update &&  \
-    apt-get install -y --no-install-recommends cuda-cudart-9-0 && \
+    apt-get install -y --no-install-recommends  \
+            cuda-cudart-9-0 cuda-cublas-9-0  cuda-cufft-9-0 cuda-curand-9-0 cuda-cusolver-9-0 cuda-cusparse-9-0  && \
     ln -s cuda-9.0 /usr/local/cuda && \
     rm -rf /var/lib/apt/lists/*
 
@@ -33,7 +34,7 @@ ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
 
-ENV CUDNN_VERSION 7.0.5.15
+ENV CUDNN_VERSION 7.5.1.10
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -91,5 +92,3 @@ RUN cd /tmp/ && \
     cd /usr/lib/x86_64-linux-gnu/  && \
     ln -s -f /usr/local/lib/libz.so.1.2.9/lib libz.so.1 && \
     cd /tmp/ && rm -rf zlib-1.2.9
-
-
