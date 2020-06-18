@@ -916,3 +916,334 @@ GET /todo/_search
 
 
 ### Create Visualization
+
+- kibana의 왼쪽 메뉴에서 Visualize 선택
+
+![](08_01.jpg)
+
+
+
+- Create a visualization 버튼을 선택하면 시각화 타임을 선택하는 화면이 나옴.
+
+  ![](08_02.jpg)
+
+
+
+- 먼저 시각화 타임인 Pie chart 를 선택하고 데이터를 countriesdata-mm.dd.yyyy 선택
+
+  ![](08_03.jpg)
+
+  
+
+- pie chart로 시각화 하는 화면 
+
+![](08_04.jpg)
+
+
+
+### Bucket and Metric Aggregation
+
+
+
+- 오른쪽 메뉴에서 metrics에서는 count선택되어 있으며,
+- Buckets에서는  Split slices 와 split chart 로  2 options 이 있으면 Split slices를 선택 
+
+![](08_05.jpg)
+
+
+
+- Split Slices 이 선택되면 아래와 같이 여러 Aggregation을 선택 가능
+
+![](08_06.jpg)
+
+
+
+- 아래와 같이 나머지 부분을 선택하고 Update 버튼 선택
+
+![](08_07.jpg)
+
+#### Pie chart display
+
+- Pie chart 오른쪽 상단에 여러 Region들에 대해서 다양한 색상으로 범례를 보여줌.
+
+![](08_08.jpg)
+
+
+
+- Pie chart을 선택하면, 선택된 지역의 퍼센트를 보여줌.
+
+  ![](08_09.jpg)
+
+
+
+- 작업한 Pie chart를 저장하기 위해서는 상단의 Save 버튼 선택
+
+![](08_10.jpg)
+
+- Title에 Regionwisedata 라고 입력하고 Save 버튼 선택
+
+![](08_11.jpg)
+
+
+
+- 입력한 title명으로 아래와 같이 보여지고,  search option에  Country:Aus* 입력하고 엔터를 치면 아래와 같이     Aus가 들어간 지역들만 보여짐
+
+![](08_12.jpg)
+
+
+
+## 9. Kibana — Working with Charts
+
+아래 3가지 chart를 사용하여 일반적인 chart 사용법을 이해하자.
+
+- Horizontal Bar Chart
+- Vertical Bar Chart
+- Pie Chart
+
+
+
+### Horizontal Bar Chart
+
+- Visualize에서 New Visualize 버튼 선택하고  여러 chart중에서 Horizontal Bar를 선택 
+
+![](09_01.jpg)
+
+
+
+- countriesdata-mm.dd.yyyy index를 선택
+
+![](09_02.jpg)
+
+
+
+- countriesdata-mm.dd.yyyy index를 선택한 화면
+- 기본적으로 count를 보여줌.
+
+![](09_03.jpg)
+
+
+
+지금부터 인구수 상위  10 국가의 데이터를 보여저는 horizontal graph을 plot함.
+
+Y, X축에 원하는 항목을 선택이 필요하고 bucket과 Metric Aggregation을 선택
+
+Y-Axis Count를 선택하여  Aggregation항목을 max를, field 항목은 Population을 선택하고 Update 버튼 선택함.
+
+![](09_04.jpg)
+
+
+
+X-axis에서 Aggregation항목은 Terms를 선택,  field항목은  Population, Order by 항목은 metric:Max Population을 선택후에 Update 버튼 선택
+
+![](09_05.jpg)
+
+
+
+###  Vertical Bar Chart
+
+- Visualize에서 New Visualize 버튼 선택후에  vertical bar와  countriesdata-mm.dd.yyyy index를 선택
+- Y-axis를 아래와 같이 선택
+
+![](09_06.jpg)
+
+- X-axis를 아래와 같이 선택
+
+![](09_07.jpg)
+
+- Update 버튼 선택한 후에 결과 화면
+
+![](09_08.jpg)
+
+
+
+- 결과를 countrywise_maxarea 라고 저장하고 나중에 dashboard에서 사용.
+
+
+
+## Pie Chart
+
+- Visualize에서 New Visualize 버튼 선택후에  pie chart와  countriesdata-mm.dd.yyyy index를 선택
+
+- buckets에서 (+) Add  버튼 선택하고  split slices 옵션을 선택, 나머지 옵션은 아래와 같이 선택
+  - Aggregation : Terms
+  - Field : Region.keyword
+  - Order by : Metric: Count
+  - Oder : Descending
+  - Size : 10
+
+![](09_09.jpg)
+
+
+
+- Pie chart display
+
+![](09_10.jpg)
+
+- Regionwisedata 라는 이름으로 저장하고 이후에 dashboard에서 사용함.
+
+
+
+## 10. Kibana — Working with Graphs
+
+
+
+### Line Graph
+
+- Visualize에서 New Visualize 버튼 선택후에  line  char 와  countriesdata-mm.dd.yyyy index를 선택
+
+- Y-axis를 아래와 같이 선택
+
+![](10_01.jpg)
+
+- X-axis 를 아래와 같이 선택
+
+![](10_02.jpg)
+
+- line chart의 결과 화면
+- linegraph_maxpopulation 라는 이름으로 저장하고 이후 dashboard에서 사용함.
+
+![](10_03.jpg)
+
+
+
+### Area Graph
+
+- Visualize에서 New Visualize 버튼 선택후에  line  char 와  countriesdata-mm.dd.yyyy index를 선택
+
+- X- axis 과 Y-axis에 대해서 아래와 같이 설정
+
+![](10_04.jpg)
+
+![](10_05.jpg)
+
+- 결과 화면
+
+![](10_06.jpg)
+
+
+
+## 11. Kibana — Working with Heat Map
+
+### Getting Started with Heat Map
+
+- Visualize에서 New Visualize 버튼 선택후에  heap map 와  countriesdata-mm.dd.yyyy index를 선택
+
+- Metrics에서 아래와 같이 선택
+
+![](11_01.jpg)
+
+- Buckets에서 X-axis 값을 아래와 같이 선택
+
+![](11_02.jpg)
+
+- 결과 화면
+
+![](11_03.jpg)
+
+
+
+## 12. Kibana — Working with Coordinate Map
+
+-  kibana에서 Coordinate Map은 지도 영역과 aggregation을 기반한 원으로 표시된 영역을 보여줌.
+
+### Create Index for Coordinate Map
+
+- coordinate map에 대해서 사용되어지는 Bucket aggregation은 geohash aggregation임.
+- geohash aggregation은 geo point( 위도, 경도 ) 필드를 가져야 함.
+- Kibana dev tools을 사용해서  geo point 데이터형식의  bulk data를 추가.
+
+```
+# elasticsearch 7.x 이상일때
+
+# cities index 생성 
+PUT /cities
+{
+  "mappings": {
+      "properties": {
+        "location": {
+          "type": "geo_point"
+        }
+      }
+  }
+}
+
+# 데이터추가 
+POST /cities/_bulk?refresh
+{"index":{"_id":1}}
+{"location": "2.089330000000046,41.47367000000008", "city": "SantCugat"}
+{"index":{"_id":2}}
+{"location": "2.2947825000000677,41.601800991000076", "city": "Granollers"}
+{"index":{"_id":3}}
+{"location": "2.1105957495300474,41.5496295760424", "city": "Sabadell"}
+{"index":{"_id":4}}
+{"location": "2.132605678083895,41.5370461908878", "city": "Barbera"}
+{"index":{"_id":5}}
+{"location": "2.151270020052683,41.497779918345415", "city": "Cerdanyola"}
+{"index":{"_id":6}}
+{"location": "2.1364609496220606,41.371303520399344", "city": "Barcelona"}
+{"index":{"_id":7}}
+{"location": "2.0819450306711165,41.385491966414705", "city": "Sant Just Desvern"}
+{"index":{"_id":8}}
+{"location": "2.00532082278266,41.542294286427385", "city": "Rubi"}
+{"index":{"_id":9}}
+{"location": "1.9560805366930398,41.56142635214226", "city": "Viladecavalls"}
+{"index":{"_id":10}}
+{"location": "2.09205348251486,41.39327140161001", "city": "Esplugas de Llobregat"}
+
+# 확인
+GET /_cat/indices
+```
+
+
+
+- 업로드한 데이터를 가지고 cites라는 index를 생성
+-  왼쪽 메뉴에서 Management  선택 > Kibana index pattern 선택 > Create index pattern 선택
+
+![](12_01.jpg)
+
+
+
+- cities index를 생성한 결과 화면
+- location이 geo_point 타임으로 생성됨
+
+![](12_02.jpg)
+
+
+
+### Getting Started with Coordinate Maps
+
+- Visualize에서 Map을 선택
+
+![](12_03.jpg)
+
+
+
+- 지도에 표시한 데이터를 추가하기 위해서 Add layer 메뉴 선택
+
+![](12_04.jpg)
+
+
+
+- kibana index pattern으로부터 데이터를 읽어오기 위해서 Documents 선택 
+
+![](12_05.jpg)
+
+
+
+- cites  index를 선택하고 Add layer 선택 
+
+![](12_06.jpg)
+
+- 결과화면
+
+![](12_07.jpg)
+
+
+
+## 13. Kibana — Working with Guage and Goal
+
+- gauge visualization는 미리 정의된 범위에서  데이터를 고려해서 표현
+- goal visualization는 goal와 data metric이 goal쪽으로 진전상태를 표현
+
+### Working with Gauge
+
