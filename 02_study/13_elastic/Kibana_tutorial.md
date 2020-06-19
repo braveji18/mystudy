@@ -1060,7 +1060,7 @@ X-axis에서 Aggregation항목은 Terms를 선택,  field항목은  Population, 
 
 
 
-## Pie Chart
+### Pie Chart
 
 - Visualize에서 New Visualize 버튼 선택후에  pie chart와  countriesdata-mm.dd.yyyy index를 선택
 
@@ -1240,10 +1240,150 @@ GET /_cat/indices
 
 
 
-## 13. Kibana — Working with Guage and Goal
+## 14. Kibana — Working with Guage and Goal
 
 - gauge visualization는 미리 정의된 범위에서  데이터를 고려해서 표현
 - goal visualization는 goal와 data metric이 goal쪽으로 진전상태를 표현
 
 ### Working with Gauge
+
+- Visualize에서 New Visualize 버튼 선택후에  Gauge 와  medicalvisits-dd.mm.yyyy  index를 선택
+
+![](12_08.jpg)
+
+- From Date를 2018년 8월 18일로 선택
+
+![](12_09.jpg)
+
+- metric 과 bucket aggregation을 아래와 같이 선택
+
+![](12_11.jpg)
+
+![](12_10.jpg)
+
+- Data options Tab에서 아래와 같이 선택
+
+![](12_12.jpg)
+
+- 결과 화면
+
+![](12_13.jpg)
+
+
+
+### Working with Goal
+
+- Visualize에서 New Visualize 버튼 선택후에  Goal 와  medicalvisits-dd.mm.yyyy  index를 선택
+
+- From Date를 2018년 8월 18일로 선택
+
+![](12_09.jpg)
+
+- metric 과 bucket aggregation을 아래와 같이 선택
+
+![](12_11.jpg)
+
+![](12_10.jpg)
+
+- Data options Tab에서 아래와 같이 선택
+
+![](12_14.jpg)
+
+
+
+- 결과 화면
+
+![](12_15.jpg)
+
+
+
+## 15. Kibana — Working with Canvas
+
+- canvas visualization를 사용하면 다양한 색상 조합, 모양, 텍스트, 다중 페이지 설정 등으로 데이터를 나타냄
+
+### Loading Sample Data for Canvas Creation
+
+- Home에서 Load a data set and a kibana dashboard 를 선택 
+
+![](12_16.jpg)
+
+- sample 데이터 추가화면에서 "Sample eCommerce orders" 데이터를  Add data 버튼를 선택하여 추가
+
+![](12_17.jpg)
+
+
+
+### Getting Started with Canvas Visualization
+
+- kibana의 왼쪽 메뉴에서 Canvas 선택
+
+![](12_18.jpg)
+
+- "eCommerce Revenue Tracking" Workpad을 선택
+
+![](12_19.jpg)
+
+- "eCommerce Revenue Tracking"  canvas 화면
+
+![](12_20.jpg)
+
+
+
+### Cloning an Existing Workpad in Canvas
+
+- "eCommerce Revenue Tracking"의 Clone workpad 버튼 선택
+
+![](12_21.jpg)
+
+- Page 1에서 "Total sales"  항목을 선택
+
+![](15_01.jpg)
+
+
+
+- 오른쪽 사이드 메뉴에서 관련 데이터를 보여줌.
+
+![](15_02.jpg)
+
+- 녹색으로 되어 있는 default style을 하늘색으로 변경
+
+![](15_03.jpg)
+
+- text settings에서 폰트, 크기, 기타 설정을 변경 가능
+
+![](15_04.jpg)
+
+
+
+### Adding New Page to Workpad Inside Canvas
+
+- 아래와 같이 workpad에 새로운 Page를 추가
+
+![](15_05.jpg)
+
+
+
+- 새로운 page 생성된 화면
+
+![](15_06.jpg)
+
+
+
+- Add element 버튼을 클릭하면  모든  visualization 요소를 보여줌.
+
+![](15_07.jpg)
+
+
+
+- Data table 와  Area Chart 요소를 추가
+
+  ![](15_08.jpg)
+
+  
+
+
+
+## 16. Kibana — Create Dashboard
+
+
 
