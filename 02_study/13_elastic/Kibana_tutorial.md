@@ -1379,11 +1379,118 @@ GET /_cat/indices
 
   ![](15_08.jpg)
 
-  
-
 
 
 ## 16. Kibana — Create Dashboard
+
+- 이전 장에서 생성한 다양한 시각화 그래프, 차트들을 Dashboard에 조합하는방법을 알아봄.
+
+### Getting Started with Dashboard
+
+![](16_01.jpg)
+
+
+
+- Create new dashboard 버튼을 선택
+
+![](16_02.jpg)
+
+
+
+- 상단 메뉴에는 Save, Cancel, Add, Options, Share 가 위치
+- "Add an existing"을 선택하여 이미 만들어진  Visualization요소를 추가 가능
+
+
+
+### Add Visualization to Dashboard
+
+- "Add an existing"을 선택했을때, 이미 만들어진 Visualization요소를 보여줌.
+
+![](16_03.jpg)
+
+
+
+- Regionwisedata, countrywise_maxarea, linegraph_maxpopulation 을 순차적으로 선택
+
+![](16_04.jpg)
+
+
+
+### Save Dashboard
+
+- 상단 save 버튼을 선택하여 저장
+
+![](16_05.jpg)
+
+
+
+
+
+### Changing Time Range for Dashboard
+
+- 날짜 메뉴에서 "Last 15 minutes" 선택
+- 시간 필드가 없는 정적 데이터이므로 표시되는 데이터는 변경되지 않음. 
+- 실시간 시스템에 연결하여 시간을 변경하면 데이터가 반영.
+
+![](16_06.jpg)
+
+
+
+- 날짜 메뉴에서 Relative, Absolute  방식으로 시간 설정 가능
+
+![](16_07.jpg)
+
+
+
+### Using Search and Filter in Dashboard
+
+- 특정 지역에 대한 내용만 보여지기를 원하면 검색바에서 "region:OCEANIA" 와 같이 입력
+
+![](16_08.jpg)
+
+- 검색 결과
+
+![](16_09.jpg)
+
+
+
+- filter 추가하면 비슷한 효과가 있음.
+
+![](16_10.jpg)
+
+
+
+### Inspect and Fullscreen
+
+- 각각의 visualize 요소에서 Inspect 메뉴를 선택하면 테이블형식으로 visualize 에서 사용된 데이터를 보여줌.
+
+  ![](16_11.jpg)
+
+  ![](16_12.jpg)
+
+  
+
+- fullscreen 메뉴를 선택하면 전체화면 모드로 전환되고 ESC 키를 누르면 전체화면 모두 해제
+
+
+
+### Sharing Dashboard
+
+- share 버튼을 선택하여 아래와 같이 보여짐.
+
+![](16_13.jpg)
+
+- embed code 는 HTML에 추가할 iframe 코드를 생성하고  Permalinks는 브라우저에서 보여지는 URL 을 생성
+
+![](16_14.jpg)
+
+- URL 예시
+
+```
+http://10.200.101.195:5601/app/kibana#/dashboard/c2106290-b246-11ea-953c-f78e7a090f0e?_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:15,i:'38ebc3cf-5d4a-404f-8d31-01d1ee27a956',w:24,x:0,y:0),id:'28297cc0-af30-11ea-9880-0baff356c363',panelIndex:'38ebc3cf-5d4a-404f-8d31-01d1ee27a956',type:visualization,version:'7.7.1'),(embeddableConfig:(),gridData:(h:15,i:'4d67518d-91f8-4af0-acee-05039c0aaae0',w:24,x:24,y:0),id:a9f17020-afe7-11ea-953c-f78e7a090f0e,panelIndex:'4d67518d-91f8-4af0-acee-05039c0aaae0',type:visualization,version:'7.7.1'),(embeddableConfig:(),gridData:(h:15,i:a657df92-1791-428c-801e-530ce300d77e,w:24,x:0,y:15),id:'995a8680-aff0-11ea-953c-f78e7a090f0e',panelIndex:a657df92-1791-428c-801e-530ce300d77e,type:visualization,version:'7.7.1')),query:(language:kuery,query:''),timeRestore:!f,title:'Country%20Details',viewMode:view)&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:'2020-06-26T06:12:56.014Z',to:'2020-06-26T06:27:26.864Z'))
+```
+
+
 
 
 
