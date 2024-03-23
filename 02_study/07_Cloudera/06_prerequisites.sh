@@ -98,7 +98,22 @@ pssh -h /root/allnodes "service ntpd start"
 pssh -h /root/allnodes "chkconfig ntpd on"
 pssh -i -h /root/allnodes "ntpq -pn"
 
+###############################
+# chrony 설정
+###############################
+pssh -h /root/allnodes "yum install chrony -y "
+pssh -h /root/allnodes "systemctl enable chronyd &&  systemctl start chronyd "
 
+sed -i '/pool.ntp.org/d' /etc/chrony.conf
+
+cat <<EOT >>  /etc/chrony.conf
+server 10.200.101.19   iburst
+EOT
+
+pscp -h /root/allnodes /etc/chrony.conf  /etc/chrony.conf
+pssh -h /root/allnodes "systemctl restart chronyd "
+pssh -i -h /root/allnodes "timedatectl"
+pssh -i -h /root/allnodes "chronyc sources -v "
 
 ###############################
 # ulimit 설정
