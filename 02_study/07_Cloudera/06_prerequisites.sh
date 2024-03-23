@@ -118,10 +118,10 @@ pssh -i -h /root/allnodes "chronyc sources -v "
 ###############################
 # ulimit 설정
 ###############################
-pssh -h /root/allnodes "sed -i '$ a\root soft nofile 1048576' /etc/security/limits.conf"
-pssh -h /root/allnodes "sed -i '$ a\root hard nofile 1048576' /etc/security/limits.conf"
-pssh -h /root/allnodes "sed -i '$ a\root soft nproc  65536' /etc/security/limits.conf"
-pssh -h /root/allnodes "sed -i '$ a\root hard nproc  65536' /etc/security/limits.conf"
+pssh -h /root/allnodes "sed -i '$ a\* soft nofile 1048576' /etc/security/limits.conf"
+pssh -h /root/allnodes "sed -i '$ a\* hard nofile 1048576' /etc/security/limits.conf"
+pssh -h /root/allnodes "sed -i '$ a\* soft nproc  65536' /etc/security/limits.conf"
+pssh -h /root/allnodes "sed -i '$ a\* hard nproc  65536' /etc/security/limits.conf"
 
 pssh -i -h /root/allnodes "cat /etc/security/limits.conf | grep -i root "
 
