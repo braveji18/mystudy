@@ -92,7 +92,9 @@ pscp -h /root/allnodes  /etc/cloudera-scm-agent/config.ini   /etc/cloudera-scm-a
 #Cloudera Manager Server 패키지 설치
 ###############################
 yum install -y cloudera-manager-server
-/usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm scm
+
+# /usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm scm  # cdh 5.x
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql scm scm scm  # cdh 6.x, cdp 7.x
 
 
 ###############################
